@@ -126,7 +126,7 @@ public class TelaCadBairro extends javax.swing.JFrame {
         jPanelTitulo.setLayout(jPanelTituloLayout);
         jPanelTituloLayout.setHorizontalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+            .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
         );
         jPanelTituloLayout.setVerticalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

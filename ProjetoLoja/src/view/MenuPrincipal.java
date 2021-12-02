@@ -5,6 +5,15 @@
 package view;
 
 import controller.ControllerCadCidade;
+import controller.ControllerCadBairro;
+import controller.ControllerCadCliente;
+import controller.ControllerCadCor;
+import controller.ControllerCadFornecedor;
+import controller.ControllerCadMarca;
+import controller.ControllerCadProduto;
+import controller.ControllerCadTamanho;
+import controller.ControllerCadVendedor;
+
 
 /**
  *
@@ -30,16 +39,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        Cadastros = new javax.swing.JMenu();
         Cidade = new javax.swing.JMenuItem();
         Bairro = new javax.swing.JMenuItem();
         Cliente = new javax.swing.JMenuItem();
         Vendedor = new javax.swing.JMenuItem();
         Fornecedor = new javax.swing.JMenuItem();
         Produto = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        Marca = new javax.swing.JMenuItem();
+        Cor = new javax.swing.JMenuItem();
+        Tamanho = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,7 +64,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGap(0, 265, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Cadastros");
+        Cadastros.setText("Cadastros");
 
         Cidade.setText("Cidade");
         Cidade.addActionListener(new java.awt.event.ActionListener() {
@@ -63,16 +72,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 CidadeActionPerformed(evt);
             }
         });
-        jMenu1.add(Cidade);
+        Cadastros.add(Cidade);
 
         Bairro.setText("Bairro");
-        jMenu1.add(Bairro);
+        Bairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BairroActionPerformed(evt);
+            }
+        });
+        Cadastros.add(Bairro);
 
         Cliente.setText("Cliente");
-        jMenu1.add(Cliente);
+        Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClienteActionPerformed(evt);
+            }
+        });
+        Cadastros.add(Cliente);
 
         Vendedor.setText("Vendedor");
-        jMenu1.add(Vendedor);
+        Vendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VendedorActionPerformed(evt);
+            }
+        });
+        Cadastros.add(Vendedor);
 
         Fornecedor.setText("Fornecedor");
         Fornecedor.addActionListener(new java.awt.event.ActionListener() {
@@ -80,31 +104,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 FornecedorActionPerformed(evt);
             }
         });
-        jMenu1.add(Fornecedor);
+        Cadastros.add(Fornecedor);
 
         Produto.setText("Produto");
-        jMenu1.add(Produto);
-
-        jMenuItem1.setText("Marca");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Cor");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        Produto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                ProdutoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        Cadastros.add(Produto);
 
-        jMenuItem3.setText("Tamanho");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        Marca.setText("Marca");
+        Marca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                MarcaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        Cadastros.add(Marca);
 
-        jMenuBar1.add(jMenu1);
+        Cor.setText("Cor");
+        Cor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CorActionPerformed(evt);
+            }
+        });
+        Cadastros.add(Cor);
+
+        Tamanho.setText("Tamanho");
+        Tamanho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TamanhoActionPerformed(evt);
+            }
+        });
+        Cadastros.add(Tamanho);
+
+        jMenuBar1.add(Cadastros);
 
         jMenu2.setText("Relatórios");
         jMenuBar1.add(jMenu2);
@@ -135,16 +169,53 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_CidadeActionPerformed
 
     private void FornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FornecedorActionPerformed
-        // TODO add your handling code here:
+        TelaCadFornecedor telaCadFornecedor = new TelaCadFornecedor();
+        ControllerCadFornecedor controllerCadFornecedor = new ControllerCadFornecedor(telaCadFornecedor);
+        telaCadFornecedor.setVisible(true);
     }//GEN-LAST:event_FornecedorActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void CorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorActionPerformed
+        TelaCadCor telaCadCor = new TelaCadCor();
+        ControllerCadCor controllerCadCor = new ControllerCadCor(telaCadCor);
+        telaCadCor.setVisible(true);
+    }//GEN-LAST:event_CorActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void TamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TamanhoActionPerformed
+        TelaCadTamanho telaCadTamanho = new TelaCadTamanho();
+        ControllerCadTamanho controllerCadTamanho = new ControllerCadTamanho(telaCadTamanho);
+        telaCadTamanho.setVisible(true);
+    }//GEN-LAST:event_TamanhoActionPerformed
+
+    private void BairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BairroActionPerformed
+        TelaCadBairro telaCadBairro = new TelaCadBairro();
+        ControllerCadBairro controllerCadBairro = new ControllerCadBairro(telaCadBairro);
+        telaCadBairro.setVisible(true);
+    }//GEN-LAST:event_BairroActionPerformed
+
+    private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
+        TelaCadCliente telaCadCliente = new TelaCadCliente();
+        ControllerCadCliente controllerCadCliente = new ControllerCadCliente(telaCadCliente);
+        telaCadCliente.setVisible(true);
+    }//GEN-LAST:event_ClienteActionPerformed
+
+    private void VendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendedorActionPerformed
+        TelaCadVendedor telaCadVendedor = new TelaCadVendedor();
+        ControllerCadVendedor controllerCadVendedor = new ControllerCadVendedor(telaCadVendedor);
+        telaCadVendedor.setVisible(true);
+    }//GEN-LAST:event_VendedorActionPerformed
+
+    private void ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdutoActionPerformed
+        TelaCadProduto TelaCadProduto = new TelaCadProduto();
+        ControllerCadProduto controllerCadProduto = new ControllerCadProduto(TelaCadProduto);
+        TelaCadProduto.setVisible(true);
+    }//GEN-LAST:event_ProdutoActionPerformed
+
+    private void MarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcaActionPerformed
+        TelaCadMarca TelaCadMarca = new TelaCadMarca();
+        ControllerCadMarca controllerCadMarca = new ControllerCadMarca(TelaCadMarca);
+        TelaCadMarca.setVisible(true);
+    }//GEN-LAST:event_MarcaActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -183,17 +254,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Bairro;
+    private javax.swing.JMenu Cadastros;
     private javax.swing.JMenuItem Cidade;
     private javax.swing.JMenuItem Cliente;
+    private javax.swing.JMenuItem Cor;
     private javax.swing.JMenuItem Fornecedor;
+    private javax.swing.JMenuItem Marca;
     private javax.swing.JMenuItem Produto;
+    private javax.swing.JMenuItem Tamanho;
     private javax.swing.JMenuItem Vendedor;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

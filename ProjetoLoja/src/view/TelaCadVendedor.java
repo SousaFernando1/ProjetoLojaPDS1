@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author house
@@ -18,6 +20,10 @@ public class TelaCadVendedor extends javax.swing.JFrame {
         initComponents();
     }
 
+
+    public JPanel getjPanelDados() {
+        return jPanelDados;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

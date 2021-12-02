@@ -8,20 +8,20 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import view.ModeloCadastros;
-import view.TelaCadCidade;
+import view.TelaCadProduto;
 
-public class ControllerCadCidade implements ActionListener {
+public class ControllerCadProduto implements ActionListener {
 
-    TelaCadCidade telaCadCidade;
+    TelaCadProduto telaCadProduto;
 
-    public ControllerCadCidade(TelaCadCidade telaCadCidade) {
-        this.telaCadCidade = telaCadCidade;
+    public ControllerCadProduto(TelaCadProduto telaCadProduto) {
+        this.telaCadProduto = telaCadProduto;
 
-        telaCadCidade.getjButtonBuscar().addActionListener(this);
-        telaCadCidade.getjButtonNovo().addActionListener(this);
-        telaCadCidade.getjButtonCancelar().addActionListener(this);
-        telaCadCidade.getjButtonGravar().addActionListener(this);
-        telaCadCidade.getjButtonSair().addActionListener(this);
+        telaCadProduto.getjButtonBuscar().addActionListener(this);
+        telaCadProduto.getjButtonNovo().addActionListener(this);
+        telaCadProduto.getjButtonCancelar().addActionListener(this);
+        telaCadProduto.getjButtonGravar().addActionListener(this);
+        telaCadProduto.getjButtonSair().addActionListener(this);
 
         ativa(true);
         ligaDesliga(false);
@@ -32,34 +32,34 @@ public class ControllerCadCidade implements ActionListener {
     //Não foram desenvolvidas ainda as funcionalidades de persistência
     @Override
     public void actionPerformed(ActionEvent acao) {
-        if (acao.getSource() == telaCadCidade.getjButtonNovo()) {
+        if (acao.getSource() == telaCadProduto.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
-        } else if (acao.getSource() == telaCadCidade.getjButtonCancelar()) {
+        } else if (acao.getSource() == telaCadProduto.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);
-        } else if (acao.getSource() == telaCadCidade.getjButtonGravar()) {
+        } else if (acao.getSource() == telaCadProduto.getjButtonGravar()) {
             ativa(true);
             ligaDesliga(false);
-        } else if (acao.getSource() == telaCadCidade.getjButtonBuscar()) {
-        } else if (acao.getSource() == telaCadCidade.getjButtonSair()) {
-	    this.telaCadCidade.dispose();
+        } else if (acao.getSource() == telaCadProduto.getjButtonBuscar()) {
+        } else if (acao.getSource() == telaCadProduto.getjButtonSair()) {
+	    this.telaCadProduto.dispose();
         }
     }
 
     //Método para habilitar/desabilitar botões(controle de estados)
     public void ativa(boolean estado) {
-        telaCadCidade.getjButtonNovo().setEnabled(estado);
-        telaCadCidade.getjButtonCancelar().setEnabled(!estado);
-        telaCadCidade.getjButtonGravar().setEnabled(!estado);
-        telaCadCidade.getjButtonBuscar().setEnabled(estado);
-        telaCadCidade.getjButtonSair().setEnabled(estado);
+        telaCadProduto.getjButtonNovo().setEnabled(estado);
+        telaCadProduto.getjButtonCancelar().setEnabled(!estado);
+        telaCadProduto.getjButtonGravar().setEnabled(!estado);
+        telaCadProduto.getjButtonBuscar().setEnabled(estado);
+        telaCadProduto.getjButtonSair().setEnabled(estado);
     }
 
     //Método para Ativação/Desativação/Limpeza ds 
     //Componentes do jPanelDados
     public void ligaDesliga(boolean estado) {
-        Component[] componentes = this.telaCadCidade.getjPanelDados().getComponents();
+        Component[] componentes = this.telaCadProduto.getjPanelDados().getComponents();
         for (Component componenteAtual : componentes) {
             if (componenteAtual instanceof JTextField) {
                 ((JTextField) componenteAtual).setText("");

@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author house
@@ -16,6 +18,10 @@ public class TelaCadCliente extends javax.swing.JFrame {
      */
     public TelaCadCliente() {
         initComponents();
+    }
+
+    public JPanel getjPanelDados() {
+        return jPanelDados;
     }
 
     /**
