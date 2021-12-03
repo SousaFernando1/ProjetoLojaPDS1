@@ -8,6 +8,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import view.ModeloCadastros;
+import view.TelaCadFoneFornecedor;
 import view.TelaCadFornecedor;
 
 public class ControllerCadFornecedor implements ActionListener {
@@ -26,6 +27,10 @@ public class ControllerCadFornecedor implements ActionListener {
         ativa(true);
         ligaDesliga(false);
 
+    }
+
+    public ControllerCadFornecedor(TelaCadFoneFornecedor TelaCadFoneFornecedor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     //Nesse método controlamos o que fazer quando uma ação acontece

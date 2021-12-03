@@ -7,12 +7,16 @@ package view;
 import controller.ControllerCadCidade;
 import controller.ControllerCadBairro;
 import controller.ControllerCadCliente;
+import controller.ControllerCadCondicaoPagamento;
 import controller.ControllerCadCor;
+import controller.ControllerCadFoneFornecedor;
 import controller.ControllerCadFornecedor;
 import controller.ControllerCadMarca;
 import controller.ControllerCadProduto;
 import controller.ControllerCadTamanho;
+import controller.ControllerCadTipoProduto;
 import controller.ControllerCadVendedor;
+import view.TelaCadTipoProduto;
 
 
 /**
@@ -49,6 +53,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Marca = new javax.swing.JMenuItem();
         Cor = new javax.swing.JMenuItem();
         Tamanho = new javax.swing.JMenuItem();
+        FoneFornecedor = new javax.swing.JMenuItem();
+        TipoProduto = new javax.swing.JMenuItem();
+        CondicaoPagamento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,6 +145,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         Cadastros.add(Tamanho);
 
+        FoneFornecedor.setText("Fone Fornecedor");
+        FoneFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FoneFornecedorActionPerformed(evt);
+            }
+        });
+        Cadastros.add(FoneFornecedor);
+
+        TipoProduto.setText("Tipo Produto");
+        TipoProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TipoProdutoActionPerformed(evt);
+            }
+        });
+        Cadastros.add(TipoProduto);
+
+        CondicaoPagamento.setText("Condicao Pagamento");
+        CondicaoPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CondicaoPagamentoActionPerformed(evt);
+            }
+        });
+        Cadastros.add(CondicaoPagamento);
+
         jMenuBar1.add(Cadastros);
 
         jMenu2.setText("Relatórios");
@@ -216,6 +247,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         TelaCadMarca.setVisible(true);
     }//GEN-LAST:event_MarcaActionPerformed
 
+    private void FoneFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FoneFornecedorActionPerformed
+       TelaCadFoneFornecedor TelaCadFoneFornecedor = new TelaCadFoneFornecedor();
+       ControllerCadFoneFornecedor controllerCadFoneFornecedor = new ControllerCadFoneFornecedor(TelaCadFoneFornecedor);
+       TelaCadFoneFornecedor.setVisible(true);
+    }//GEN-LAST:event_FoneFornecedorActionPerformed
+
+    private void TipoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoProdutoActionPerformed
+       TelaCadTipoProduto TelaCadTipoProduto = new TelaCadTipoProduto();
+       ControllerCadTipoProduto controllerCadTipoProduto = new ControllerCadTipoProduto(TelaCadTipoProduto);
+       TelaCadTipoProduto.setVisible(true);
+    }//GEN-LAST:event_TipoProdutoActionPerformed
+
+    private void CondicaoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CondicaoPagamentoActionPerformed
+       TelaCadCondicaoPagamento TelaCadCondicaoPagamento = new TelaCadCondicaoPagamento();
+       ControllerCadCondicaoPagamento controllerCadCondicaoPagamento = new ControllerCadCondicaoPagamento(TelaCadCondicaoPagamento);
+       TelaCadCondicaoPagamento.setVisible(true);
+    }//GEN-LAST:event_CondicaoPagamentoActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -257,11 +306,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu Cadastros;
     private javax.swing.JMenuItem Cidade;
     private javax.swing.JMenuItem Cliente;
+    private javax.swing.JMenuItem CondicaoPagamento;
     private javax.swing.JMenuItem Cor;
+    private javax.swing.JMenuItem FoneFornecedor;
     private javax.swing.JMenuItem Fornecedor;
     private javax.swing.JMenuItem Marca;
     private javax.swing.JMenuItem Produto;
     private javax.swing.JMenuItem Tamanho;
+    private javax.swing.JMenuItem TipoProduto;
     private javax.swing.JMenuItem Vendedor;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sharkcode/Downloads/Fernando%20-%20Tarefa%201%20-%20POO/ProjetoLoja/src/view/TelaCadCliente.java</file>
-            <file>file:/home/sharkcode/Downloads/Fernando%20-%20Tarefa%201%20-%20POO/ProjetoLoja/src/view/TelaCadVendedor.java</file>
-            <file>file:/home/sharkcode/Downloads/Fernando%20-%20Tarefa%201%20-%20POO/ProjetoLoja/src/view/TelaCadProduto.java</file>
-            <file>file:/home/sharkcode/Downloads/Fernando%20-%20Tarefa%201%20-%20POO/ProjetoLoja/src/view/TelaCadCidade.java</file>
-            <file>file:/home/sharkcode/Downloads/Fernando%20-%20Tarefa%201%20-%20POO/ProjetoLoja/src/view/TelaCadMarca.java</file>
-            <file>file:/home/sharkcode/Downloads/Fernando%20-%20Tarefa%201%20-%20POO/ProjetoLoja/src/view/TelaCadFornecedor.java</file>
-            <file>file:/home/sharkcode/Downloads/Fernando%20-%20Tarefa%201%20-%20POO/ProjetoLoja/src/view/TelaCadCor.java</file>
-            <file>file:/home/sharkcode/Downloads/Fernando%20-%20Tarefa%201%20-%20POO/ProjetoLoja/src/view/TelaCadBairro.java</file>
+            <file>file:/C:/dev/gustavo/workspace/projetos/ProjetoLojaPDS1/ProjetoLoja/src/view/MenuPrincipal.java</file>
+            <file>file:/C:/dev/gustavo/workspace/projetos/ProjetoLojaPDS1/ProjetoLoja/src/controller/ControllerCadFornecedor.java</file>
+            <file>file:/C:/dev/gustavo/workspace/projetos/ProjetoLojaPDS1/ProjetoLoja/src/controller/ControllerCadTipoProduto.java</file>
+            <file>file:/C:/dev/gustavo/workspace/projetos/ProjetoLojaPDS1/ProjetoLoja/src/controller/ControllerCadFoneFornecedor.java</file>
+            <file>file:/C:/dev/gustavo/workspace/projetos/ProjetoLojaPDS1/ProjetoLoja/src/view/TelaCadFoneFornecedor.java</file>
+            <file>file:/C:/dev/gustavo/workspace/projetos/ProjetoLojaPDS1/ProjetoLoja/src/controller/ControllerCadCondicaoPagamento.java</file>
+            <file>file:/C:/dev/gustavo/workspace/projetos/ProjetoLojaPDS1/ProjetoLoja/src/view/TelaCadCondicaoPagamento.java</file>
         </group>
     </open-files>
 </project-private>
