@@ -1,4 +1,4 @@
-package bo;
+package model.bo;
 public class ItensCompra {
     private int iditensCompra;
     private Compra compra_idcompra;

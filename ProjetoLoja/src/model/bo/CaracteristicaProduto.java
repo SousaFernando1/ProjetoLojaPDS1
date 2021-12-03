@@ -1,4 +1,4 @@
-package bo;
+package model.bo;
 public class CaracteristicaProduto {
     private int idCaracteristicaProduto;
     private Produto produto_idproduto;

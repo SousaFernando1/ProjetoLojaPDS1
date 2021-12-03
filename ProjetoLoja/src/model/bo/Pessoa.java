@@ -1,4 +1,4 @@
-package bo;
+package model.bo;
 public abstract class Pessoa {
     private String nome;
     private String compleEndereco;

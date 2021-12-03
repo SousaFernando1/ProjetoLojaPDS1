@@ -1,4 +1,4 @@
-package bo;
+package model.bo;
 public class Cliente extends Pessoa{
     private int idcliente;
     private String dtNascCliente;

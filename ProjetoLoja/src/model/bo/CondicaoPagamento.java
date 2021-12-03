@@ -1,4 +1,4 @@
-package bo;
+package model.bo;
 public class CondicaoPagamento {
     private int idcondicaoPagamento;
     private String descricaoCondicaoPagamento;

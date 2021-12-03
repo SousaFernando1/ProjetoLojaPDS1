@@ -1,4 +1,4 @@
-package bo;
+package model.bo;
 public class Fornecedor extends Pessoa {
     private int idfornecedor;
     private String cnpjFornecedor;

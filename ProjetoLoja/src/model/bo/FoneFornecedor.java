@@ -1,4 +1,4 @@
-package bo;
+package model.bo;
 public class FoneFornecedor {
     private String foneFornecedor;
     private Fornecedor fornecedor_idfornecedor;
