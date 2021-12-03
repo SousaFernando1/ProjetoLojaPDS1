@@ -96,7 +96,7 @@ public class TelaCadFoneFornecedor extends javax.swing.JFrame {
         jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Formulário de Cadastro de .....");
+        setTitle("Formulário de Cadastro de  Fone Fornecedor");
         setResizable(false);
 
         jPanelTitulo.setBackground(new java.awt.Color(204, 255, 0));

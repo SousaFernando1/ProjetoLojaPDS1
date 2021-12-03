@@ -110,14 +110,6 @@ public class TelaCadCondicaoPagamento extends javax.swing.JFrame {
         this.jTFDiasPrimeiraParcelaCondicaoPagamento = jTFDiasPrimeiraParcelaCondicaoPagamento;
     }
 
-    public JTextField getjTFIdCidade1() {
-        return jTFIdCidade1;
-    }
-
-    public void setjTFIdCidade1(JTextField jTFIdCidade1) {
-        this.jTFIdCidade1 = jTFIdCidade1;
-    }
-
     public JTextField getjTFIdCondicaoPagamento() {
         return jTFIdCondicaoPagamento;
     }
@@ -149,14 +141,13 @@ public class TelaCadCondicaoPagamento extends javax.swing.JFrame {
         jTFDiasEntreParcelasCondicaoPagamento = new javax.swing.JTextField();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
-        jTFIdCidade1 = new javax.swing.JTextField();
         jButtonCancelar = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Formulário de Cadastro de .....");
+        setTitle("Formulário de Cadastro de  Condição Pagamento");
         setResizable(false);
 
         jPanelTitulo.setBackground(new java.awt.Color(204, 255, 0));
@@ -266,7 +257,7 @@ public class TelaCadCondicaoPagamento extends javax.swing.JFrame {
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDiasEntreParcelas)
                     .addComponent(jTFDiasEntreParcelasCondicaoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelDados, java.awt.BorderLayout.CENTER);
@@ -278,14 +269,6 @@ public class TelaCadCondicaoPagamento extends javax.swing.JFrame {
         jButtonNovo.setText("Novo");
         jButtonNovo.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanelBotoes.add(jButtonNovo);
-
-        jTFIdCidade1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTFIdCidade1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFIdCidade1ActionPerformed(evt);
-            }
-        });
-        jPanelBotoes.add(jTFIdCidade1);
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -318,10 +301,6 @@ public class TelaCadCondicaoPagamento extends javax.swing.JFrame {
     private void jTFIdCondicaoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIdCondicaoPagamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFIdCondicaoPagamentoActionPerformed
-
-    private void jTFIdCidade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIdCidade1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFIdCidade1ActionPerformed
 
     private void jTFDiasPrimeiraParcelaCondicaoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDiasPrimeiraParcelaCondicaoPagamentoActionPerformed
         // TODO add your handling code here:
@@ -402,7 +381,6 @@ public class TelaCadCondicaoPagamento extends javax.swing.JFrame {
     private javax.swing.JTextField jTFDescricaoCondicaoPagamento;
     private javax.swing.JTextField jTFDiasEntreParcelasCondicaoPagamento;
     private javax.swing.JTextField jTFDiasPrimeiraParcelaCondicaoPagamento;
-    private javax.swing.JTextField jTFIdCidade1;
     private javax.swing.JTextField jTFIdCondicaoPagamento;
     // End of variables declaration//GEN-END:variables
 

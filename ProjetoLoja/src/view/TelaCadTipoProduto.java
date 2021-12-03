@@ -46,7 +46,7 @@ public class TelaCadTipoProduto extends javax.swing.JFrame {
         jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Formulário de Cadastro de .....");
+        setTitle("Formulário de Cadastro de Tipo Produto");
         setResizable(false);
 
         jPanelTitulo.setBackground(new java.awt.Color(204, 255, 0));
