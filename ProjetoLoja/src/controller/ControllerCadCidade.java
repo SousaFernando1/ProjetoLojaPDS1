@@ -7,6 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.bo.Cidade;
+import service.CidadeService;
 import view.ModeloCadastros;
 import view.TelaCadCidade;
 
@@ -39,6 +41,15 @@ public class ControllerCadCidade implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCidade.getjButtonGravar()) {
+            
+            Cidade cidade = new Cidade();
+            
+            cidade.setDescricaoCidade(this.telaCadCidade.getjTFNomeCidade().getText());
+            cidade.setUfCidade(this.telaCadCidade.getjTFUF().getText());
+            
+            CidadeService cidService = new CidadeService();
+            //cidService.salvar(cidade);
+            
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCidade.getjButtonBuscar()) {
