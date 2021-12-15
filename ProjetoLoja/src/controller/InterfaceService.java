@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
-/**
- *
- * @author gusta
- */
+import java.util.List;
+
+
 public interface InterfaceService <T>{
-    
+    public abstract void salvar(T objeto);
+    public abstract List<T> buscar();
+    public abstract T buscar(int codigo);
+    public abstract T buscar(String descricao);
+    public abstract void atualizar(T objeto);
+    public abstract void apagar(T objeto);
 }
