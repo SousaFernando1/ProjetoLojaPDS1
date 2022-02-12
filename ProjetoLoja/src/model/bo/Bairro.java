@@ -4,12 +4,12 @@ public class Bairro {
     
     private int idBairro;
     private String descricaoBairro;
-    private String cidadeMae;
+    private int cidadeMae;
 
     public Bairro() {
     }
 
-    public Bairro(int idBairro, String descricaoBairro, String cidadeMae) {
+    public Bairro(int idBairro, String descricaoBairro, int cidadeMae) {
         this.idBairro = idBairro;
         this.descricaoBairro = descricaoBairro;        
 	this.cidadeMae = cidadeMae;
@@ -32,11 +32,11 @@ public class Bairro {
         this.descricaoBairro = descricaoBairro;
     }
 
-    public String getCidadeMae() {
+    public int getCidadeMae() {
 	return cidadeMae;
     }
 
-    public void setCidadeMae(String cidadeMae) {
+    public void setCidadeMae(int cidadeMae) {
 	this.cidadeMae = cidadeMae;
     }
 

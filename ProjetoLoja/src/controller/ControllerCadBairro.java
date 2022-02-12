@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.DAO.CidadeDAO;
 import model.bo.Bairro;
+import model.bo.Cidade;
 import service.BairroService;
 import view.ModeloCadastros;
 import view.TelaCadBairro;
@@ -45,9 +46,20 @@ public class ControllerCadBairro implements ActionListener {
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadBairro.getjButtonGravar()) {
             Bairro bairro = new Bairro();
-            
-            bairro.setCidadeMae(this.telaCadBairro.getjComboBox1().getSelectedItem().toString());  
-	    //Terminar de setar os atributos de bairro
+
+
+	    String tempString;
+            tempString = this.telaCadBairro.getjComboBox1().getSelectedItem().toString();
+
+	    Cidade cidade = new Cidade();
+	    CidadeDAO cidadeDAO = new CidadeDAO();
+	    cidade = cidadeDAO.retrieve(tempString);
+	    
+	    
+            bairro.setDescricaoBairro(this.telaCadBairro.getjTFNomeBairro().getText());
+            bairro.setCidadeMae(cidade.getIdCidade());  
+  
+
 
 
             BairroService bairroService = new BairroService();

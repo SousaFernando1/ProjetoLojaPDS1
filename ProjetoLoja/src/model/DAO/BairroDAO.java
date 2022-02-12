@@ -13,13 +13,14 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
     public void create(Bairro objeto) {
         //Abrindo conexão
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO bairro (descricaoBairro) VALUES(?)";
-	System.out.println(objeto.getCidadeMae());
+        String sqlExecutar = "INSERT INTO bairro (descricaoBairro, cidadeMae) VALUES(?, ?)";
         PreparedStatement pstm = null;
         
         try{
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, objeto.getDescricaoBairro());
+            pstm.setInt(2, objeto.getCidadeMae());
+
             pstm.executeUpdate();
         } catch(Exception ex){
             ex.printStackTrace();
@@ -31,7 +32,8 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
     @Override
     public List<Bairro> retrieve() {
         String sqlExecutar     =   " SELECT idbairro, "
-                                 + " descricaoBairro  "
+                                 + " descricaoBairro,"
+				 + " cidadeMae"
                                  + " FROM bairro";
         
         Connection conexao     = ConnectionFactory.getConnection();
@@ -46,7 +48,8 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
             while(rst.next()){
                 Bairro bairro = new Bairro();
                 bairro.setIdBairro(rst.getInt("idbairro"));
-                bairro.setDescricaoBairro(rst.getString("descricaoBairro"));
+                bairro.setDescricaoBairro(rst.getString("descricaoBairro"));                
+		bairro.setCidadeMae(rst.getInt("cidadeMae"));
                 bairros.add(bairro);
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
@@ -60,7 +63,8 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
     @Override
     public Bairro retrieve(int codigo) {
         String sqlExecutar     =   " SELECT idbairro, "
-                                 + " descricaoBairro  "
+                                 + " descricaoBairro,"
+				 + " cidadeMae"
                                  + " FROM bairro "
                                  + " WHERE bairro.idbairro = ?";
         
@@ -77,6 +81,7 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
             while(rst.next()){
                 bairro.setIdBairro(rst.getInt("idbairro"));
                 bairro.setDescricaoBairro(rst.getString("descricaoBairro"));
+		bairro.setCidadeMae(rst.getInt("cidadeMae"));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
             return bairro; 
@@ -91,7 +96,8 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
     @Override
     public Bairro retrieve(String descricao) {
         String sqlExecutar     =   " SELECT idbairro, "
-                                 + " descricaoBairro  "
+                                 + " descricaoBairro,"
+				 + " cidadeMae"
                                  + " FROM bairro "
                                  + " WHERE bairro.descricaoBairro = ?";
         Connection conexao     = ConnectionFactory.getConnection();
@@ -107,6 +113,7 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
             while(rst.next()){
                 bairro.setIdBairro(rst.getInt("idbairro"));
                 bairro.setDescricaoBairro(rst.getString("descricaoBairro"));
+		bairro.setCidadeMae(rst.getInt("cidadeMae"));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
 
@@ -122,13 +129,15 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
     public void update(Bairro objeto) {
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = " UPDATE bairro "
-                           + " SET descricaoBairro   = ? "
+                           + " SET descricaoBairro   = ? ,"
+			   + " cidadeMae = ?"
                            + " WHERE bairro.idbairro = ? ";
         PreparedStatement pstm = null;
         try{
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, objeto.getDescricaoBairro());
-            pstm.setInt(2, objeto.getIdBairro());
+            pstm.setInt(2, objeto.getCidadeMae());
+            pstm.setInt(3, objeto.getIdBairro());
             pstm.executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
