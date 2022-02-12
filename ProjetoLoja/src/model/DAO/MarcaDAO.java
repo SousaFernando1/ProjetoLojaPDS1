@@ -105,8 +105,8 @@ public class MarcaDAO implements InterfaceDAO<Marca>{
             Marca marca = new Marca();
             
             while(rst.next()){
-                marca.setIdMarca(rst.getInt("idcor"));
-                marca.setDescricaoMarca(rst.getString("descricaoCor"));
+                marca.setIdMarca(rst.getInt("idmarca"));
+                marca.setDescricaoMarca(rst.getString("descricaoMarca"));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
 

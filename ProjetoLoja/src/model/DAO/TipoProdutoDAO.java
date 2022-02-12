@@ -89,8 +89,7 @@ public class TipoProdutoDAO implements InterfaceDAO<TipoProduto>{
 
     @Override
     public TipoProduto retrieve(String descricao) {
-        String sqlExecutar     =   " SELECT idtipoProduto, "
-                                 + " descricaoTipoProduto,"
+        String sqlExecutar     =   " SELECT idtipoProduto, descricaoTipoProduto"
                                  + " FROM tipoProduto"
                                  + " WHERE tipoProduto.descricaoTipoProduto= ?";
         Connection conexao     = ConnectionFactory.getConnection();
@@ -104,8 +103,8 @@ public class TipoProdutoDAO implements InterfaceDAO<TipoProduto>{
             TipoProduto tipoProduto = new TipoProduto();
             
             while(rst.next()){
-                tipoProduto.setIdTipoProduto(rst.getInt("idbairro"));
-                tipoProduto.setDescricaoTipoProduto(rst.getString("descricaoBairro"));
+                tipoProduto.setIdTipoProduto(rst.getInt("idtipoProduto"));
+                tipoProduto.setDescricaoTipoProduto(rst.getString("descricaoTipoProduto"));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
 
