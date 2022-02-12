@@ -5,7 +5,10 @@
  */
 package view;
 
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,6 +27,208 @@ public class TelaCadCliente extends javax.swing.JFrame {
         return jPanelDados;
     }
 
+    public JComboBox<String> getjComboBox1() {
+	return jComboBoxBairro;
+    }
+
+    public void setjComboBox1(JComboBox<String> jComboBox1) {
+	this.jComboBoxBairro = jComboBox1;
+    }
+
+    public JComboBox<String> getjComboBox2() {
+	return jComboBoxCidade;
+    }
+
+    public void setjComboBox2(JComboBox<String> jComboBox2) {
+	this.jComboBoxCidade = jComboBox2;
+    }
+
+    public JLabel getjLabel1() {
+	return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+	this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel10() {
+	return jLabel10;
+    }
+
+    public void setjLabel10(JLabel jLabel10) {
+	this.jLabel10 = jLabel10;
+    }
+
+    public JLabel getjLabel2() {
+	return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+	this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+	return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+	this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+	return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+	this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+	return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+	this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+	return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+	this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+	return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+	this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+	return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+	this.jLabel8 = jLabel8;
+    }
+
+    public JLabel getjLabel9() {
+	return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+	this.jLabel9 = jLabel9;
+    }
+
+    public JLabel getjLabelTitulo() {
+	return jLabelTitulo;
+    }
+
+    public void setjLabelTitulo(JLabel jLabelTitulo) {
+	this.jLabelTitulo = jLabelTitulo;
+    }
+
+    public JPanel getjPanelBotoes() {
+	return jPanelBotoes;
+    }
+
+    public void setjPanelBotoes(JPanel jPanelBotoes) {
+	this.jPanelBotoes = jPanelBotoes;
+    }
+
+    public JPanel getjPanelTitulo() {
+	return jPanelTitulo;
+    }
+
+    public void setjPanelTitulo(JPanel jPanelTitulo) {
+	this.jPanelTitulo = jPanelTitulo;
+    }
+
+    public JTextField getLogradouro() {
+	return Logradouro;
+    }
+
+    public void setLogradouro(JTextField Logradouro) {
+	this.Logradouro = Logradouro;
+    }
+
+    public JTextField getNome() {
+	return Nome;
+    }
+
+    public void setNome(JTextField Nome) {
+	this.Nome = Nome;
+    }
+
+    public JTextField getCompEndereco() {
+	return compEndereco;
+    }
+
+    public void setCompEndereco(JTextField compEndereco) {
+	this.compEndereco = compEndereco;
+    }
+
+    public JTextField getCpf() {
+	return cpf;
+    }
+
+    public void setCpf(JTextField cpf) {
+	this.cpf = cpf;
+    }
+
+    public JTextField getDtNascimento() {
+	return dtNascimento;
+    }
+
+    public void setDtNascimento(JTextField dtNascimento) {
+	this.dtNascimento = dtNascimento;
+    }
+
+    public JTextField getEmail() {
+	return email;
+    }
+
+    public void setEmail(JTextField email) {
+	this.email = email;
+    }
+
+    public JTextField getFone() {
+	return fone;
+    }
+
+    public void setFone(JTextField fone) {
+	this.fone = fone;
+    }
+
+    public JComboBox<String> getjComboBoxBairro() {
+	return jComboBoxBairro;
+    }
+
+    public void setjComboBoxBairro(JComboBox<String> jComboBoxBairro) {
+	this.jComboBoxBairro = jComboBoxBairro;
+    }
+
+    public JComboBox<String> getjComboBoxCidade() {
+	return jComboBoxCidade;
+    }
+
+    public void setjComboBoxCidade(JComboBox<String> jComboBoxCidade) {
+	this.jComboBoxCidade = jComboBoxCidade;
+    }
+
+    public JTextField getRg() {
+	return rg;
+    }
+
+    public void setRg(JTextField rg) {
+	this.rg = rg;
+    }
+
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,26 +241,26 @@ public class TelaCadCliente extends javax.swing.JFrame {
         jPanelTitulo = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
         jPanelDados = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        Nome = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        rg = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        dtNascimento = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        fone = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        compEndereco = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        Logradouro = new javax.swing.JTextField();
+        jComboBoxBairro = new javax.swing.JComboBox<>();
+        jComboBoxCidade = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        cpf = new javax.swing.JTextField();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -91,9 +296,9 @@ public class TelaCadCliente extends javax.swing.JFrame {
 
         jPanelDados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                NomeActionPerformed(evt);
             }
         });
 
@@ -115,9 +320,9 @@ public class TelaCadCliente extends javax.swing.JFrame {
 
         jLabel9.setText("Logradouro:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxBairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel10.setText("Fone:");
 
@@ -131,11 +336,11 @@ public class TelaCadCliente extends javax.swing.JFrame {
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField7))
+                        .addComponent(Logradouro))
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6))
+                        .addComponent(compEndereco))
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanelDadosLayout.createSequentialGroup()
@@ -144,33 +349,33 @@ public class TelaCadCliente extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanelDadosLayout.createSequentialGroup()
-                                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jComboBoxCidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(jComboBoxBairro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jPanelDadosLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1))
+                                .addComponent(Nome))
                             .addGroup(jPanelDadosLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField8)
+                                .addComponent(cpf)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4))
+                                .addComponent(fone))
                             .addGroup(jPanelDadosLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2)))
+                                .addComponent(rg)))
                         .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -180,37 +385,37 @@ public class TelaCadCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Logradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(compEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -252,9 +457,9 @@ public class TelaCadCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_NomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,13 +528,20 @@ public class TelaCadCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Logradouro;
+    private javax.swing.JTextField Nome;
+    private javax.swing.JTextField compEndereco;
+    private javax.swing.JTextField cpf;
+    private javax.swing.JTextField dtNascimento;
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField fone;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSair;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBoxBairro;
+    private javax.swing.JComboBox<String> jComboBoxCidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -344,14 +556,7 @@ public class TelaCadCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelDados;
     private javax.swing.JPanel jPanelTitulo;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField rg;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JButton getjButtonBuscar() {

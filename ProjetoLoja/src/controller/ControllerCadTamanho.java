@@ -7,6 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.bo.Tamanho;
+import service.TamanhoService;
 import view.ModeloCadastros;
 import view.TelaCadTamanho;
 
@@ -39,6 +41,16 @@ public class ControllerCadTamanho implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadTamanho.getjButtonGravar()) {
+	    Tamanho tamanho = new Tamanho();
+            
+            tamanho.setDescricaoTamanho(this.telaCadTamanho.getDescricaoTamanho().getText());  
+
+
+            TamanhoService tamanhoService = new TamanhoService();
+            tamanhoService.salvar(tamanho);
+
+
+
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadTamanho.getjButtonBuscar()) {

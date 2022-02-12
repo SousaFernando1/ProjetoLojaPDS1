@@ -7,6 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.bo.Cliente;
+import service.ClienteService;
 import view.ModeloCadastros;
 import view.TelaCadCliente;
 
@@ -39,6 +41,23 @@ public class ControllerCadCliente implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCliente.getjButtonGravar()) {
+
+            Cliente cliente = new Cliente();
+
+
+//            cidade.setUfCidade(this.telaCadCidade.getjTFUF().getText());
+
+	    cliente.setNome(this.telaCadCliente.getNome().getText());
+	    cliente.setDtNascCliente(this.telaCadCliente.getDtNascimento().getText());	    
+	    cliente.setEmail(this.telaCadCliente.getEmail().getText());
+	    cliente.setCpfCliente(this.telaCadCliente.getCpf().getText());
+	    cliente.setRgCliente(this.telaCadCliente.getRg().getText());
+	    cliente.setCompleEndereco(this.telaCadCliente.getCompEndereco().getText());
+	    cliente.setFoneCliente(this.telaCadCliente.getFone().getText());
+
+            ClienteService clienteService = new ClienteService();
+            clienteService.salvar(cliente);
+
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCliente.getjButtonBuscar()) {

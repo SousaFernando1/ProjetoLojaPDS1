@@ -14,6 +14,7 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
         //Abrindo conexão
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = "INSERT INTO bairro (descricaoBairro) VALUES(?)";
+	System.out.println(objeto.getCidadeMae());
         PreparedStatement pstm = null;
         
         try{
@@ -44,7 +45,7 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
             
             while(rst.next()){
                 Bairro bairro = new Bairro();
-                bairro.setIdBairro(rst.getInt("idbbairro"));
+                bairro.setIdBairro(rst.getInt("idbairro"));
                 bairro.setDescricaoBairro(rst.getString("descricaoBairro"));
                 bairros.add(bairro);
             }
@@ -74,7 +75,7 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
             rst = pstm.executeQuery();  
             Bairro bairro = new Bairro();
             while(rst.next()){
-                bairro.setIdBairro(rst.getInt("idbbairro"));
+                bairro.setIdBairro(rst.getInt("idbairro"));
                 bairro.setDescricaoBairro(rst.getString("descricaoBairro"));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
@@ -104,7 +105,7 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
             Bairro bairro = new Bairro();
             
             while(rst.next()){
-                bairro.setIdBairro(rst.getInt("idbbairro"));
+                bairro.setIdBairro(rst.getInt("idbairro"));
                 bairro.setDescricaoBairro(rst.getString("descricaoBairro"));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);

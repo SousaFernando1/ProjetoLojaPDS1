@@ -62,21 +62,22 @@ public class TelaCadCor extends javax.swing.JFrame {
         this.jButtonSair = jButtonSair;
     }
 
-    public JTextField getjTFIdCidade() {
-        return jTFIdCidade;
+    public JTextField getDescricaoCor() {
+	return descricaoCor;
     }
 
-    public void setjTFIdCidade(JTextField jTFIdCidade) {
-        this.jTFIdCidade = jTFIdCidade;
+    public void setDescricaoCor(JTextField descricaoCor) {
+	this.descricaoCor = descricaoCor;
     }
 
-    public JTextField getjTFNomeCidade() {
-        return jTFNomeCidade;
+    public JTextField getIdCor() {
+	return idCor;
     }
 
-    public void setjTFNomeCidade(JTextField jTFNomeCidade) {
-        this.jTFNomeCidade = jTFNomeCidade;
+    public void setIdCor(JTextField idCor) {
+	this.idCor = idCor;
     }
+
 
     public JPanel getjPanelDados() {
         return jPanelDados;
@@ -95,9 +96,9 @@ public class TelaCadCor extends javax.swing.JFrame {
         jLabelTitulo = new javax.swing.JLabel();
         jPanelDados = new javax.swing.JPanel();
         jLId = new javax.swing.JLabel();
-        jTFIdCidade = new javax.swing.JTextField();
+        idCor = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTFNomeCidade = new javax.swing.JTextField();
+        descricaoCor = new javax.swing.JTextField();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -136,7 +137,7 @@ public class TelaCadCor extends javax.swing.JFrame {
         jLId.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLId.setText("ID:");
 
-        jTFIdCidade.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        idCor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         jLabel2.setText("Nome:");
 
@@ -152,10 +153,10 @@ public class TelaCadCor extends javax.swing.JFrame {
                             .addGroup(jPanelDadosLayout.createSequentialGroup()
                                 .addComponent(jLId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTFIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(idCor, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 440, Short.MAX_VALUE))
-                    .addComponent(jTFNomeCidade))
+                    .addComponent(descricaoCor))
                 .addContainerGap())
         );
         jPanelDadosLayout.setVerticalGroup(
@@ -163,12 +164,12 @@ public class TelaCadCor extends javax.swing.JFrame {
             .addGroup(jPanelDadosLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLId))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTFNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descricaoCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -257,6 +258,8 @@ public class TelaCadCor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField descricaoCor;
+    private javax.swing.JTextField idCor;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGravar;
@@ -268,7 +271,5 @@ public class TelaCadCor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelDados;
     private javax.swing.JPanel jPanelTitulo;
-    private javax.swing.JTextField jTFIdCidade;
-    private javax.swing.JTextField jTFNomeCidade;
     // End of variables declaration//GEN-END:variables
 }

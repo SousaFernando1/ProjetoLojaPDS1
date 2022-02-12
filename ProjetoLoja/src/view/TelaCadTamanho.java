@@ -62,21 +62,23 @@ public class TelaCadTamanho extends javax.swing.JFrame {
         this.jButtonSair = jButtonSair;
     }
 
-    public JTextField getjTFIdCidade() {
-        return jTFIdCidade;
+    public JTextField getDescricaoTamanho() {
+	return descricaoTamanho;
     }
 
-    public void setjTFIdCidade(JTextField jTFIdCidade) {
-        this.jTFIdCidade = jTFIdCidade;
+    public void setDescricaoTamanho(JTextField descricaoTamanho) {
+	this.descricaoTamanho = descricaoTamanho;
     }
 
-    public JTextField getjTFNomeCidade() {
-        return jTFNomeCidade;
+    public JTextField getIdTamanho() {
+	return idTamanho;
     }
 
-    public void setjTFNomeCidade(JTextField jTFNomeCidade) {
-        this.jTFNomeCidade = jTFNomeCidade;
+    public void setIdTamanho(JTextField idTamanho) {
+	this.idTamanho = idTamanho;
     }
+
+
 
     public JPanel getjPanelDados() {
         return jPanelDados;
@@ -95,9 +97,9 @@ public class TelaCadTamanho extends javax.swing.JFrame {
         jLabelTitulo = new javax.swing.JLabel();
         jPanelDados = new javax.swing.JPanel();
         jLId = new javax.swing.JLabel();
-        jTFIdCidade = new javax.swing.JTextField();
+        idTamanho = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTFNomeCidade = new javax.swing.JTextField();
+        descricaoTamanho = new javax.swing.JTextField();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -136,7 +138,7 @@ public class TelaCadTamanho extends javax.swing.JFrame {
         jLId.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLId.setText("ID:");
 
-        jTFIdCidade.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        idTamanho.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         jLabel2.setText("Número:");
 
@@ -151,9 +153,9 @@ public class TelaCadTamanho extends javax.swing.JFrame {
                         .addGroup(jPanelDadosLayout.createSequentialGroup()
                             .addComponent(jLId)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTFIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(idTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTFNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(descricaoTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(159, Short.MAX_VALUE))
         );
         jPanelDadosLayout.setVerticalGroup(
@@ -161,12 +163,12 @@ public class TelaCadTamanho extends javax.swing.JFrame {
             .addGroup(jPanelDadosLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLId))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTFNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descricaoTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -255,6 +257,8 @@ public class TelaCadTamanho extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField descricaoTamanho;
+    private javax.swing.JTextField idTamanho;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGravar;
@@ -266,7 +270,5 @@ public class TelaCadTamanho extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelDados;
     private javax.swing.JPanel jPanelTitulo;
-    private javax.swing.JTextField jTFIdCidade;
-    private javax.swing.JTextField jTFNomeCidade;
     // End of variables declaration//GEN-END:variables
 }

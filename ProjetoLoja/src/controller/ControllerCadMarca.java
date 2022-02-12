@@ -7,6 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.bo.Marca;
+import service.MarcaService;
 import view.ModeloCadastros;
 import view.TelaCadMarca;
 
@@ -39,6 +41,14 @@ public class ControllerCadMarca implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadMarca.getjButtonGravar()) {
+
+            Marca marca = new Marca();
+            
+            marca.setDescricaoMarca(this.telaCadMarca.getjTFNomeCidade().getText());
+            
+            MarcaService marcaService = new MarcaService();
+            marcaService.salvar(marca);
+
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadMarca.getjButtonBuscar()) {

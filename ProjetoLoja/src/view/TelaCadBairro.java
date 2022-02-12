@@ -6,8 +6,12 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import model.DAO.CidadeDAO;
+import model.bo.Cidade;
+import java.util.List;
 
 /**
  *
@@ -20,7 +24,18 @@ public class TelaCadBairro extends javax.swing.JFrame {
      */
     public TelaCadBairro() {
         initComponents();
+	carregarCombo();
     }
+
+  public void carregarCombo(){
+
+          CidadeDAO cidadeDAO = new CidadeDAO();
+          List<Cidade> list = cidadeDAO.retrieve();
+          for(Cidade item: list){
+	    jComboBox1.addItem(item.getDescricaoCidade());
+          }
+
+    }      
 
     public JButton getjButtonBuscar() {
         return jButtonBuscar;
@@ -70,12 +85,20 @@ public class TelaCadBairro extends javax.swing.JFrame {
         this.jTFIdCidade = jTFIdCidade;
     }
 
-    public JTextField getjTFNomeCidade() {
-        return jTFNomeCidade;
+    public JTextField getjTFNomeBairro() {
+        return jTFNomeBairro;
     }
 
-    public void setjTFNomeCidade(JTextField jTFNomeCidade) {
-        this.jTFNomeCidade = jTFNomeCidade;
+    public void setjTFNomeBairro(JTextField TFNomeBairro) {
+        this.jTFNomeBairro = jTFNomeBairro;
+    }
+
+    public JComboBox<String> getjComboBox1() {
+	return jComboBox1;
+    }
+
+    public void setjComboBox1(JComboBox<String> jComboBox1) {
+	this.jComboBox1 = jComboBox1;
     }
 
 
@@ -99,7 +122,7 @@ public class TelaCadBairro extends javax.swing.JFrame {
         jLId = new javax.swing.JLabel();
         jTFIdCidade = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTFNomeCidade = new javax.swing.JTextField();
+        jTFNomeBairro = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLId1 = new javax.swing.JLabel();
         jPanelBotoes = new javax.swing.JPanel();
@@ -144,8 +167,17 @@ public class TelaCadBairro extends javax.swing.JFrame {
 
         jLabel2.setText("Nome:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setSelectedIndex(2);
+        jTFNomeBairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFNomeBairroActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLId1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLId1.setText("Cidade:");
@@ -157,7 +189,7 @@ public class TelaCadBairro extends javax.swing.JFrame {
             .addGroup(jPanelDadosLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFNomeCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .addComponent(jTFNomeBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -183,7 +215,7 @@ public class TelaCadBairro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTFNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTFNomeBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -232,6 +264,17 @@ public class TelaCadBairro extends javax.swing.JFrame {
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNovoActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        
+    
+
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTFNomeBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNomeBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFNomeBairroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,6 +329,6 @@ public class TelaCadBairro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelDados;
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JTextField jTFIdCidade;
-    private javax.swing.JTextField jTFNomeCidade;
+    private javax.swing.JTextField jTFNomeBairro;
     // End of variables declaration//GEN-END:variables
 }

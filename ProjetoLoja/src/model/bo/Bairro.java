@@ -4,13 +4,16 @@ public class Bairro {
     
     private int idBairro;
     private String descricaoBairro;
+    private String cidadeMae;
 
     public Bairro() {
     }
 
-    public Bairro(int idBairro, String descricaoBairro) {
+    public Bairro(int idBairro, String descricaoBairro, String cidadeMae) {
         this.idBairro = idBairro;
-        this.descricaoBairro = descricaoBairro;
+        this.descricaoBairro = descricaoBairro;        
+	this.cidadeMae = cidadeMae;
+
     }
 
     public int getIdBairro() {
@@ -29,9 +32,21 @@ public class Bairro {
         this.descricaoBairro = descricaoBairro;
     }
 
+    public String getCidadeMae() {
+	return cidadeMae;
+    }
+
+    public void setCidadeMae(String cidadeMae) {
+	this.cidadeMae = cidadeMae;
+    }
+
+
+
+
+
     @Override
     public String toString() {
-        return this.getIdBairro() + ", " + this.getDescricaoBairro();
+        return this.getIdBairro() + ", " + this.getDescricaoBairro() + ", " + this.getCidadeMae();
     }
     
     

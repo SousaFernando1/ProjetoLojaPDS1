@@ -7,6 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.bo.Cor;
+import service.CorService;
 import view.ModeloCadastros;
 import view.TelaCadCor;
 
@@ -39,6 +41,14 @@ public class ControllerCadCor implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCor.getjButtonGravar()) {
+	    Cor cor = new Cor();
+            
+            cor.setDescricaoCor(this.telaCadCor.getDescricaoCor().getText());  
+
+
+            CorService corService = new CorService();
+            corService.salvar(cor);
+
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCor.getjButtonBuscar()) {

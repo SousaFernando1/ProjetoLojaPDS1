@@ -7,6 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.bo.CondicaoPagamento;
+import service.CondicaoPagamentoService;
 import view.ModeloCadastros;
 import view.TelaCadCondicaoPagamento;
 import view.TelaCadFornecedor;
@@ -40,6 +42,18 @@ public class ControllerCadCondicaoPagamento implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCondicaoPagamento.getjButtonGravar()) {
+
+
+	    CondicaoPagamento condicaoPagamento = new CondicaoPagamento();
+            
+            condicaoPagamento.setDescricaoCondicaoPagamento(this.telaCadCondicaoPagamento.getjTFDescricaoCondicaoPagamento().getText());  
+	    condicaoPagamento.setNumDiasAtePrimeiraParcela(Integer.parseInt(this.telaCadCondicaoPagamento.getjTFDiasPrimeiraParcelaCondicaoPagamento().getText()));
+	    condicaoPagamento.setNumDiasEntreParcelas(Integer.parseInt(this.telaCadCondicaoPagamento.getjTFDiasEntreParcelasCondicaoPagamento().getText()));
+
+
+            CondicaoPagamentoService condicaoPagamentoService = new CondicaoPagamentoService();
+            condicaoPagamentoService.salvar(condicaoPagamento);
+
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCondicaoPagamento.getjButtonBuscar()) {

@@ -7,6 +7,9 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.DAO.CidadeDAO;
+import model.bo.Bairro;
+import service.BairroService;
 import view.ModeloCadastros;
 import view.TelaCadBairro;
 
@@ -17,6 +20,7 @@ public class ControllerCadBairro implements ActionListener {
     public ControllerCadBairro(TelaCadBairro telaCadBairro) {
         this.telaCadBairro = telaCadBairro;
 
+
         telaCadBairro.getjButtonBuscar().addActionListener(this);
         telaCadBairro.getjButtonNovo().addActionListener(this);
         telaCadBairro.getjButtonCancelar().addActionListener(this);
@@ -26,7 +30,8 @@ public class ControllerCadBairro implements ActionListener {
         ativa(true);
         ligaDesliga(false);
 
-    }
+    
+    }        
 
     //Nesse método controlamos o que fazer quando uma ação acontece
     //Não foram desenvolvidas ainda as funcionalidades de persistência
@@ -39,6 +44,15 @@ public class ControllerCadBairro implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadBairro.getjButtonGravar()) {
+            Bairro bairro = new Bairro();
+            
+            bairro.setCidadeMae(this.telaCadBairro.getjComboBox1().getSelectedItem().toString());  
+	    //Terminar de setar os atributos de bairro
+
+
+            BairroService bairroService = new BairroService();
+            bairroService.salvar(bairro);
+
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadBairro.getjButtonBuscar()) {
