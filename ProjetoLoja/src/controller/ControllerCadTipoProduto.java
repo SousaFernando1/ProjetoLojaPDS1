@@ -7,6 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.bo.TipoProduto;
+import service.TipoProdutoService;
 import view.ModeloCadastros;
 import view.TelaCadCondicaoPagamento;
 import view.TelaCadFornecedor;
@@ -41,6 +43,15 @@ public class ControllerCadTipoProduto implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadTipoProduto.getjButtonGravar()) {
+	    TipoProduto tipoProduto = new TipoProduto();
+            
+            tipoProduto.setDescricaoTipoProduto(this.telaCadTipoProduto.getjTFDescricaoTipoProduto().getText());  
+
+
+            TipoProdutoService tipoProdutoService = new TipoProdutoService();
+            tipoProdutoService.salvar(tipoProduto);
+
+
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadTipoProduto.getjButtonBuscar()) {

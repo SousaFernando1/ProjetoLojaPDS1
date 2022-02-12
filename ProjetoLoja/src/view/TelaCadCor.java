@@ -138,6 +138,11 @@ public class TelaCadCor extends javax.swing.JFrame {
         jLId.setText("ID:");
 
         idCor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        idCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idCorActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nome:");
 
@@ -218,6 +223,10 @@ public class TelaCadCor extends javax.swing.JFrame {
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNovoActionPerformed
+
+    private void idCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idCorActionPerformed
 
     /**
      * @param args the command line arguments

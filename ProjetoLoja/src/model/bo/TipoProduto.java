@@ -3,14 +3,14 @@ package model.bo;
 public class TipoProduto {
     
     private int idTipoProduto;
-    private String descripcaoTipoProduto;
+    private String descricaoTipoProduto;
 
     public TipoProduto() {
     }
 
-    public TipoProduto(int idTipoProduto, String descripcaoTipoProduto) {
+    public TipoProduto(int idTipoProduto, String descricaoTipoProduto) {
         this.idTipoProduto = idTipoProduto;
-        this.descripcaoTipoProduto = descripcaoTipoProduto;
+        this.descricaoTipoProduto = descricaoTipoProduto;
     }
 
     public int getIdTipoProduto() {
@@ -21,17 +21,17 @@ public class TipoProduto {
         this.idTipoProduto = idTipoProduto;
     }
 
-    public String getDescripcaoTipoProduto() {
-        return descripcaoTipoProduto;
+    public String getDescricaoTipoProduto() {
+        return descricaoTipoProduto;
     }
 
-    public void setDescripcaoTipoProduto(String descripcaoTipoProduto) {
-        this.descripcaoTipoProduto = descripcaoTipoProduto;
+    public void setDescricaoTipoProduto(String descricaoTipoProduto) {
+        this.descricaoTipoProduto = descricaoTipoProduto;
     }
 
     @Override
     public String toString() {
-        return this.getIdTipoProduto() + ", " + this.getDescripcaoTipoProduto();
+        return this.getIdTipoProduto() + ", " + this.getDescricaoTipoProduto();
     }
     
     
