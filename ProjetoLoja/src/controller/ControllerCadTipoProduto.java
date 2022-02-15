@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import model.bo.TipoProduto;
 import service.TipoProdutoService;
 import view.ModeloCadastros;
+import view.TelaBusTipoProduto;
 import view.TelaCadCondicaoPagamento;
 import view.TelaCadFornecedor;
 import view.TelaCadTipoProduto;
@@ -17,6 +18,7 @@ import view.TelaCadTipoProduto;
 public class ControllerCadTipoProduto implements ActionListener {
 
     TelaCadTipoProduto telaCadTipoProduto;
+    public static int codigo;
 
     public ControllerCadTipoProduto(TelaCadTipoProduto telaCadTipoProduto) {
         this.telaCadTipoProduto = telaCadTipoProduto;
@@ -55,6 +57,26 @@ public class ControllerCadTipoProduto implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadTipoProduto.getjButtonBuscar()) {
+	    codigo = 0;
+            //chamada da tela da busca
+            TelaBusTipoProduto telaBusTipoProduto = new TelaBusTipoProduto(null, true);
+            ControllerBusTipoProduto controllerBusTipoProduto = new ControllerBusTipoProduto(telaBusTipoProduto);
+            telaBusTipoProduto.setVisible(true);
+
+            if (codigo != 0) {
+                TipoProduto tipoProduto;
+                TipoProdutoService tipoProdutoService = new TipoProdutoService();
+                tipoProduto = tipoProdutoService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadTipoProduto.getjTFIdTipoProduto();
+                this.telaCadTipoProduto.getjTFDescricaoTipoProduto().setText(tipoProduto.getDescricaoTipoProduto());
+//                this.telaCadBairro.getjTFUF().setText(cidade.getUfCidade());
+
+                this.telaCadTipoProduto.getjTFIdTipoProduto().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadTipoProduto.getjButtonSair()) {
 	    this.telaCadTipoProduto.dispose();
         }

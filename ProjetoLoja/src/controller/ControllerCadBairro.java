@@ -12,11 +12,13 @@ import model.bo.Bairro;
 import model.bo.Cidade;
 import service.BairroService;
 import view.ModeloCadastros;
+import view.TelaBusBairro;
 import view.TelaCadBairro;
 
 public class ControllerCadBairro implements ActionListener {
 
     TelaCadBairro telaCadBairro;
+    public static int codigo;
 
     public ControllerCadBairro(TelaCadBairro telaCadBairro) {
         this.telaCadBairro = telaCadBairro;
@@ -68,6 +70,27 @@ public class ControllerCadBairro implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadBairro.getjButtonBuscar()) {
+	    codigo = 0;
+            //chamada da tela da busca
+            TelaBusBairro telaBusBairro = new TelaBusBairro(null, true);
+            ControllerBusBairro controllerBusBairro = new ControllerBusBairro(telaBusBairro);
+            telaBusBairro.setVisible(true);
+
+            if (codigo != 0) {
+                Bairro bairro;
+                BairroService bairroService = new BairroService();
+                bairro = bairroService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadBairro.getjTFIdCidade().setText(bairro.getIdBairro()+ "");
+                this.telaCadBairro.getjTFNomeBairro().setText(bairro.getDescricaoBairro());
+//                this.telaCadBairro.getjTFUF().setText(cidade.getUfCidade());
+		this.telaCadBairro.getjComboBox1().setSelectedItem(bairro.getCidadeMae());
+
+                this.telaCadBairro.getjTFIdCidade().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadBairro.getjButtonSair()) {
 	    this.telaCadBairro.dispose();
         }

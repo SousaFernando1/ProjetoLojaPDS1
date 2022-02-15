@@ -10,11 +10,13 @@ import javax.swing.JTextField;
 import model.bo.Marca;
 import service.MarcaService;
 import view.ModeloCadastros;
+import view.TelaBusMarca;
 import view.TelaCadMarca;
 
 public class ControllerCadMarca implements ActionListener {
 
     TelaCadMarca telaCadMarca;
+    public static int codigo;
 
     public ControllerCadMarca(TelaCadMarca telaCadMarca) {
         this.telaCadMarca = telaCadMarca;
@@ -52,6 +54,26 @@ public class ControllerCadMarca implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadMarca.getjButtonBuscar()) {
+codigo = 0;
+            //chamada da tela da busca
+            TelaBusMarca telaBusMarca = new TelaBusMarca(null, true);
+            ControllerBusMarca controllerBusMarca = new ControllerBusMarca(telaBusMarca);
+            telaBusMarca.setVisible(true);
+
+            if (codigo != 0) {
+                Marca marca;
+                MarcaService marcaService = new MarcaService();
+                marca = marcaService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadMarca.getjTFIdCidade().setText(marca.getIdMarca()+ "");
+                this.telaCadMarca.getjTFNomeCidade().setText(marca.getDescricaoMarca());
+//                this.telaCadBairro.getjTFUF().setText(cidade.getUfCidade());
+
+                this.telaCadMarca.getjTFIdCidade().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadMarca.getjButtonSair()) {
 	    this.telaCadMarca.dispose();
         }

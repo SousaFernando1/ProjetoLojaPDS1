@@ -10,11 +10,13 @@ import javax.swing.JTextField;
 import model.bo.Cidade;
 import service.CidadeService;
 import view.ModeloCadastros;
+import view.TelaBusCidade;
 import view.TelaCadCidade;
 
 public class ControllerCadCidade implements ActionListener {
 
     TelaCadCidade telaCadCidade;
+    public static int codigo;
 
     public ControllerCadCidade(TelaCadCidade telaCadCidade) {
         this.telaCadCidade = telaCadCidade;
@@ -53,6 +55,26 @@ public class ControllerCadCidade implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCidade.getjButtonBuscar()) {
+	    codigo = 0;
+            //chamada da tela da busca
+            TelaBusCidade telaBusCidade = new TelaBusCidade(null, true);
+            ControllerBusCidade controllerBusCidade = new ControllerBusCidade(telaBusCidade);
+            telaBusCidade.setVisible(true);
+
+            if (codigo != 0) {
+                Cidade cidade;
+                CidadeService cidadeService = new CidadeService();
+                cidade = cidadeService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadCidade.getjTFIdCidade().setText(cidade.getIdCidade() + "");
+                this.telaCadCidade.getjTFNomeCidade().setText(cidade.getDescricaoCidade());
+                this.telaCadCidade.getjTFUF().setText(cidade.getUfCidade());
+
+                this.telaCadCidade.getjTFIdCidade().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadCidade.getjButtonSair()) {
 	    this.telaCadCidade.dispose();
         }

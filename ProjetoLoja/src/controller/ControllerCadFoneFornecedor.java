@@ -7,7 +7,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.bo.FoneFornecedor;
+import service.FoneFornecedorService;
 import view.ModeloCadastros;
+import view.TelaBusFoneFornecedor;
 import view.TelaCadCondicaoPagamento;
 import view.TelaCadFoneFornecedor;
 import view.TelaCadFornecedor;
@@ -15,6 +18,7 @@ import view.TelaCadFornecedor;
 public class ControllerCadFoneFornecedor implements ActionListener {
 
     TelaCadFoneFornecedor telaCadFoneFornecedor;
+    public static int codigo;
 
     public ControllerCadFoneFornecedor(TelaCadFoneFornecedor telaCadFoneFornecedor) {
         this.telaCadFoneFornecedor = telaCadFoneFornecedor;
@@ -41,9 +45,37 @@ public class ControllerCadFoneFornecedor implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadFoneFornecedor.getjButtonGravar()) {
+	    FoneFornecedor cor = new FoneFornecedor();
+            
+            cor.setFoneFornecedor(this.telaCadFoneFornecedor.getjFormattedTextFieldFone().getText());  
+
+
+            FoneFornecedorService corService = new FoneFornecedorService();
+            corService.salvar(cor);
+
+            ativa(true);
+            ligaDesliga(false);
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadFoneFornecedor.getjButtonBuscar()) {
+	    codigo = 0;
+            //chamada da tela da busca
+            TelaBusFoneFornecedor telaBusFoneFornecedor = new TelaBusFoneFornecedor(null, true);
+            ControllerBusFoneFornecedor controllerBusFoneFornecedor = new ControllerBusFoneFornecedor(telaBusFoneFornecedor);
+            telaBusFoneFornecedor.setVisible(true);
+
+            if (codigo != 0) {
+                FoneFornecedor foneFornecedor;
+                FoneFornecedorService foneFornecedorService = new FoneFornecedorService();
+                foneFornecedor = foneFornecedorService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadFoneFornecedor.getjFormattedTextFieldFone().setText(foneFornecedor.getFoneFornecedor()+ "");
+
+                this.telaCadFoneFornecedor.getjFormattedTextFieldFone().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadFoneFornecedor.getjButtonSair()) {
 	    this.telaCadFoneFornecedor.dispose();
         }

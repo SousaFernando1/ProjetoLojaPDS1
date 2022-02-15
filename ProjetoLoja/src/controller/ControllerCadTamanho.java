@@ -10,11 +10,13 @@ import javax.swing.JTextField;
 import model.bo.Tamanho;
 import service.TamanhoService;
 import view.ModeloCadastros;
+import view.TelaBusTamanho;
 import view.TelaCadTamanho;
 
 public class ControllerCadTamanho implements ActionListener {
 
     TelaCadTamanho telaCadTamanho;
+    public static int codigo;
 
     public ControllerCadTamanho(TelaCadTamanho telaCadTamanho) {
         this.telaCadTamanho = telaCadTamanho;
@@ -54,6 +56,25 @@ public class ControllerCadTamanho implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadTamanho.getjButtonBuscar()) {
+	    codigo = 0;
+            //chamada da tela da busca
+            TelaBusTamanho telaBusTamanho = new TelaBusTamanho(null, true);
+            ControllerBusTamanho controllerBusTamanho = new ControllerBusTamanho(telaBusTamanho);
+            telaBusTamanho.setVisible(true);
+
+            if (codigo != 0) {
+                Tamanho tamanho;
+                TamanhoService tamanhoService = new TamanhoService();
+                tamanho = tamanhoService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadTamanho.getIdTamanho().setText(tamanho.getIdTamanho() + "");
+                this.telaCadTamanho.getDescricaoTamanho().setText(tamanho.getDescricaoTamanho());
+
+                this.telaCadTamanho.getIdTamanho().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadTamanho.getjButtonSair()) {
 	    this.telaCadTamanho.dispose();
         }

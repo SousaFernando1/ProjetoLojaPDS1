@@ -10,11 +10,13 @@ import javax.swing.JTextField;
 import model.bo.Cor;
 import service.CorService;
 import view.ModeloCadastros;
+import view.TelaBusCor;
 import view.TelaCadCor;
 
 public class ControllerCadCor implements ActionListener {
 
     TelaCadCor telaCadCor;
+    public static int codigo;
 
     public ControllerCadCor(TelaCadCor telaCadCor) {
         this.telaCadCor = telaCadCor;
@@ -52,6 +54,26 @@ public class ControllerCadCor implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCor.getjButtonBuscar()) {
+	    codigo = 0;
+            //chamada da tela da busca
+            TelaBusCor telaBusCor = new TelaBusCor(null, true);
+            ControllerBusCor controllerBusCor = new ControllerBusCor(telaBusCor);
+            telaBusCor.setVisible(true);
+
+            if (codigo != 0) {
+                Cor cor;
+                CorService corService = new CorService();
+                cor = corService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadCor.getIdCor().setText(cor.getIdCor()+ "");
+                this.telaCadCor.getDescricaoCor().setText(cor.getDescricaoCor());
+//                this.telaCadBairro.getjTFUF().setText(cidade.getUfCidade());
+
+                this.telaCadCor.getIdCor().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadCor.getjButtonSair()) {
 	    this.telaCadCor.dispose();
         }
