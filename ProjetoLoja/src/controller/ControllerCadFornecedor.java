@@ -1,5 +1,6 @@
 package controller;
 
+import static controller.ControllerCadCidade.codigo;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,13 +8,19 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.bo.Cidade;
+import model.bo.Fornecedor;
+import service.CidadeService;
+import service.FornecedorService;
 import view.ModeloCadastros;
+import view.TelaBusCidade;
 import view.TelaCadFoneFornecedor;
 import view.TelaCadFornecedor;
 
 public class ControllerCadFornecedor implements ActionListener {
 
     TelaCadFornecedor telaCadFornecedor;
+    public static int codigo;
 
     public ControllerCadFornecedor(TelaCadFornecedor telaCadFornecedor) {
         this.telaCadFornecedor = telaCadFornecedor;
@@ -44,9 +51,43 @@ public class ControllerCadFornecedor implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadFornecedor.getjButtonGravar()) {
+            
+            Fornecedor fornecedor = new Fornecedor();
+            
+            fornecedor.setRazaoSocialFornecedor(this.telaCadFornecedor.getRazaoSocial().getText());
+            fornecedor.setNome(this.telaCadFornecedor.getNomeFantasia().getText());
+            fornecedor.setCnpjFornecedor(this.telaCadFornecedor.getCnpj().getText());
+            fornecedor.setInscEstadualFornecedor(this.telaCadFornecedor.getInscEstadual().getText());
+            fornecedor.setEmail(this.telaCadFornecedor.getEmail().getText());
+            fornecedor.setCompleEndereco(this.telaCadFornecedor.getCompleEndereco().getText());
+            //fornecedor.setEndereco_idcep(this.telaCadFornecedor);
+            
+            FornecedorService fornecedorService = new FornecedorService();
+            fornecedorService.salvar(fornecedor);
+            
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadFornecedor.getjButtonBuscar()) {
+//            codigo = 0;
+//            //chamada da tela da busca
+//            TelaBusCidade telaBusCidade = new TelaBusCidade(null, true);
+//            ControllerBusCidade controllerBusCidade = new ControllerBusCidade(telaBusCidade);
+//            telaBusCidade.setVisible(true);
+//
+//            if (codigo != 0) {
+//                Fornecedor fornecedor;
+//                FornecedorService fornecedorService = new FornecedorService();
+//                fornecedor = fornecedorService.buscar(codigo);
+//
+//                ativa(false);
+//                ligaDesliga(true);
+//
+//                this.telaCadFornecedor.getj().setText(cidade.getIdCidade() + "");
+//                this.telaCadFornecedor.getjTFNomeCidade().setText(cidade.getDescricaoCidade());
+//                this.telaCadFornecedor.getjTFUF().setText(cidade.getUfCidade());
+//
+//                this.telaCadCidade.getjTFIdCidade().setEnabled(false);
+//            }
         } else if (acao.getSource() == telaCadFornecedor.getjButtonSair()) {
 	    this.telaCadFornecedor.dispose();
         }
