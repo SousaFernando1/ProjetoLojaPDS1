@@ -3,11 +3,16 @@ package controller;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.DAO.BairroDAO;
+import model.DAO.CidadeDAO;
+import model.bo.Bairro;
 import model.bo.Cliente;
+import model.bo.Cidade;
 import service.ClienteService;
 import view.ModeloCadastros;
 import view.TelaCadCliente;
@@ -24,6 +29,8 @@ public class ControllerCadCliente implements ActionListener {
         telaCadCliente.getjButtonCancelar().addActionListener(this);
         telaCadCliente.getjButtonGravar().addActionListener(this);
         telaCadCliente.getjButtonSair().addActionListener(this);
+        telaCadCliente.getjComboBoxCidade().addActionListener(this);
+
 
         ativa(true);
         ligaDesliga(false);
@@ -34,6 +41,21 @@ public class ControllerCadCliente implements ActionListener {
     //Não foram desenvolvidas ainda as funcionalidades de persistência
     @Override
     public void actionPerformed(ActionEvent acao) {
+	if(acao.getSource() == telaCadCliente.getjComboBoxCidade()){
+	  BairroDAO bairroDAO = new BairroDAO();
+	    CidadeDAO cidadeDAO = new CidadeDAO();
+
+	    Cidade tempCidade = cidadeDAO.retrieve(telaCadCliente.getjComboBoxCidade().getSelectedItem().toString());
+
+
+          List<Bairro> list = bairroDAO.retrieveDesc(tempCidade.getIdCidade());
+	  telaCadCliente.getjComboBoxBairro().removeAllItems();
+          for(Bairro item: list){
+	    telaCadCliente.getjComboBoxBairro().addItem(item.getDescricaoBairro());
+          }
+
+	    System.out.println(telaCadCliente.getjComboBoxCidade().getSelectedItem().toString());
+	}
         if (acao.getSource() == telaCadCliente.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);

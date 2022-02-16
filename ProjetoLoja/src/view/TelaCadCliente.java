@@ -5,10 +5,16 @@
  */
 package view;
 
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import model.DAO.BairroDAO;
+import model.DAO.CidadeDAO;
+import model.bo.Cidade;
+import model.bo.Bairro;
+
 
 /**
  *
@@ -20,8 +26,33 @@ public class TelaCadCliente extends javax.swing.JFrame {
      * Creates new form FormModeloCadastros
      */
     public TelaCadCliente() {
+
+
         initComponents();
+	carregarComboCidade();
+//	carregarComboBairro();
+
     }
+
+	public void carregarComboCidade(){
+
+          CidadeDAO cidadeDAO = new CidadeDAO();
+          List<Cidade> list = cidadeDAO.retrieve();
+          for(Cidade item: list){
+	    jComboBoxCidade.addItem(item.getDescricaoCidade());
+          }
+
+    }      
+
+//	public void carregarComboBairro(){
+//	  String cidadeAtual = jComboBoxCidade.getSelectedItem().toString();
+//	  
+//          BairroDAO bairroDAO = new BairroDAO();
+//          List<Bairro> list = bairroDAO.retrieveDesc(cidadeAtual);
+//          for(Bairro item: list){
+//	    jComboBoxBairro.addItem(item.getDescricaoBairro());
+//          }
+//    }      
 
     public JPanel getjPanelDados() {
         return jPanelDados;
@@ -320,9 +351,18 @@ public class TelaCadCliente extends javax.swing.JFrame {
 
         jLabel9.setText("Logradouro:");
 
-        jComboBoxBairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxBairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:" }));
+        jComboBoxBairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxBairroActionPerformed(evt);
+            }
+        });
 
-        jComboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCidadeActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Fone:");
 
@@ -460,6 +500,16 @@ public class TelaCadCliente extends javax.swing.JFrame {
     private void NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NomeActionPerformed
+
+    private void jComboBoxCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCidadeActionPerformed
+    
+//	carregarComboBairro();
+	
+    }//GEN-LAST:event_jComboBoxCidadeActionPerformed
+
+    private void jComboBoxBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxBairroActionPerformed
 
     /**
      * @param args the command line arguments

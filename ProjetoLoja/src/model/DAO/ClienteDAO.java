@@ -27,6 +27,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
             pstm.setString(7, objeto.getEmail());
             pstm.setString(8, objeto.getCompleEndereco());
 
+
             pstm.executeUpdate();
         } catch(Exception ex){
             ex.printStackTrace();

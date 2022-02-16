@@ -60,6 +60,44 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
             return null;
         }
     }
+
+    public List<Bairro> retrieveDesc(int cidadeMae) {
+
+        String sqlExecutar     =   " SELECT idbairro, "
+                                 + " descricaoBairro,"
+				 + " cidadeMae"
+                                 + " FROM bairro"
+				 + " WHERE bairro.cidadeMae = ?";
+        
+        Connection conexao     = ConnectionFactory.getConnection();
+        PreparedStatement pstm = null;
+        ResultSet rst          = null;
+        List<Bairro> bairros = new ArrayList<>();
+        
+        try{
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setInt(1, cidadeMae);
+	    rst = pstm.executeQuery();  
+
+            while(rst.next()){
+                Bairro bairro = new Bairro();
+                bairro.setIdBairro(rst.getInt("idbairro"));
+                bairro.setDescricaoBairro(rst.getString("descricaoBairro"));                
+		bairro.setCidadeMae(rst.getInt("cidadeMae"));
+                bairros.add(bairro);
+            }
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+	    System.out.println("TESTEEEEE: " + cidadeMae);
+
+            return bairros;       
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return null;
+        }
+    }
+
+
     @Override
     public Bairro retrieve(int codigo) {
         String sqlExecutar     =   " SELECT idbairro, "
