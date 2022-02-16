@@ -9,6 +9,7 @@ import controller.ControllerCadBairro;
 import controller.ControllerCadCliente;
 import controller.ControllerCadCondicaoPagamento;
 import controller.ControllerCadCor;
+import controller.ControllerCadEndereco;
 import controller.ControllerCadFoneFornecedor;
 import controller.ControllerCadFornecedor;
 import controller.ControllerCadMarca;
@@ -45,6 +46,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Cadastros = new javax.swing.JMenu();
         Cidade = new javax.swing.JMenuItem();
+        Endereco = new javax.swing.JMenuItem();
         Bairro = new javax.swing.JMenuItem();
         Cliente = new javax.swing.JMenuItem();
         Vendedor = new javax.swing.JMenuItem();
@@ -80,6 +82,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         Cadastros.add(Cidade);
+
+        Endereco.setText("Endereco");
+        Endereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnderecoActionPerformed(evt);
+            }
+        });
+        Cadastros.add(Endereco);
 
         Bairro.setText("Bairro");
         Bairro.addActionListener(new java.awt.event.ActionListener() {
@@ -265,6 +275,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
        TelaCadCondicaoPagamento.setVisible(true);
     }//GEN-LAST:event_CondicaoPagamentoActionPerformed
 
+    private void EnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnderecoActionPerformed
+       TelaCadEndereco TelaCadEndereco = new TelaCadEndereco();
+       ControllerCadEndereco controllerCadEndereco = new ControllerCadEndereco(TelaCadEndereco);
+       TelaCadEndereco.setVisible(true);
+    }//GEN-LAST:event_EnderecoActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -308,6 +324,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Cliente;
     private javax.swing.JMenuItem CondicaoPagamento;
     private javax.swing.JMenuItem Cor;
+    private javax.swing.JMenuItem Endereco;
     private javax.swing.JMenuItem FoneFornecedor;
     private javax.swing.JMenuItem Fornecedor;
     private javax.swing.JMenuItem Marca;

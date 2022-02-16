@@ -54,7 +54,7 @@ public class ControllerCadCliente implements ActionListener {
 	    telaCadCliente.getjComboBoxBairro().addItem(item.getDescricaoBairro());
           }
 
-	    System.out.println(telaCadCliente.getjComboBoxCidade().getSelectedItem().toString());
+//	    System.out.println(telaCadCliente.getjComboBoxCidade().getSelectedItem().toString());
 	}
         if (acao.getSource() == telaCadCliente.getjButtonNovo()) {
             ativa(false);
