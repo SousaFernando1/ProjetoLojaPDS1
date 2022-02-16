@@ -13,7 +13,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
     public void create(Cliente objeto) {
         //Abrindo conexão
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO cliente (nomeCliente, dtNasCliente, cpfCliente, rgCliente, foneCliente, fone2Cliente, emailCliente, compleEnderecoCliente) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sqlExecutar = "INSERT INTO cliente (nomeCliente, dtNasCliente, cpfCliente, rgCliente, foneCliente, fone2Cliente, emailCliente, compleEnderecoCliente, endereco_idcep) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstm = null;
         
         try{
@@ -26,6 +26,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
             pstm.setString(6, objeto.getFone2Cliente());
             pstm.setString(7, objeto.getEmail());
             pstm.setString(8, objeto.getCompleEndereco());
+            pstm.setInt(9, objeto.getEndereco_idcep().getIdCep());
 
 
             pstm.executeUpdate();
@@ -72,7 +73,9 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
 
 		System.out.println(rst.getString("endereco_idcep"));
 
-//                cliente.setEndereco_idcep(rst.getString("endereco_idcep"));
+                EnderecoDAO endereco = new EnderecoDAO();
+                cliente.setEndereco_idcep(endereco.retrieve(rst.getString("endereco_idcep")));
+                
                 clientes.add(cliente);
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
@@ -120,7 +123,8 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
 
 		System.out.println(rst.getString("endereco_idcep"));
 
-//                cliente.setEndereco_idcep(rst.getString("endereco_idcep"));
+                EnderecoDAO endereco = new EnderecoDAO();
+                cliente.setEndereco_idcep(endereco.retrieve(rst.getString("endereco_idcep")));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
             return cliente; 
@@ -168,7 +172,8 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
 
 		System.out.println(rst.getString("endereco_idcep"));
 
-//                cliente.setEndereco_idcep(rst.getString("endereco_idcep"));
+                EnderecoDAO endereco = new EnderecoDAO();
+                cliente.setEndereco_idcep(endereco.retrieve(rst.getString("endereco_idcep")));
 }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
 

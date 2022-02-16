@@ -1,6 +1,7 @@
 package model.bo;
 public class Fornecedor extends Pessoa {
     private int idfornecedor;
+    private String razaoSocialFornecedor;
     private String cnpjFornecedor;
     private String inscEstadualFornecedor;
     private Endereco endereco_idcep;
@@ -8,9 +9,10 @@ public class Fornecedor extends Pessoa {
     public Fornecedor() {
     }
 
-    public Fornecedor(int idfornecedor, String cnpjFornecedor, String inscEstadualFornecedor, Endereco endereco_idcep, String nome, String compleEndereco, String cep, String email, String status) {
+    public Fornecedor(int idfornecedor, String razaoSocialFornecedor, String cnpjFornecedor, String inscEstadualFornecedor, Endereco endereco_idcep, String nome, String compleEndereco, String cep, String email, String status) {
         super(nome, compleEndereco, cep, email, status);
         this.idfornecedor = idfornecedor;
+        this.razaoSocialFornecedor = razaoSocialFornecedor;
         this.cnpjFornecedor = cnpjFornecedor;
         this.inscEstadualFornecedor = inscEstadualFornecedor;
         this.endereco_idcep = endereco_idcep;
@@ -22,6 +24,14 @@ public class Fornecedor extends Pessoa {
 
     public void setIdfornecedor(int idfornecedor) {
         this.idfornecedor = idfornecedor;
+    }
+    
+    public String getRazaoSocialFornecedor() {
+        return razaoSocialFornecedor;
+    }
+
+    public void setRazaoSocialFornecedor(String razaoSocialFornecedor) {
+        this.razaoSocialFornecedor = razaoSocialFornecedor;
     }
 
     public String getCnpjFornecedor() {
@@ -50,7 +60,7 @@ public class Fornecedor extends Pessoa {
 
     @Override
     public String toString() {
-        return this.getCnpjFornecedor() + ", " + this.getInscEstadualFornecedor();
+        return this.getRazaoSocialFornecedor() + ", " + this.getCnpjFornecedor() + ", " + this.getInscEstadualFornecedor();
     }
     
     
