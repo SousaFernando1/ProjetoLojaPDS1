@@ -4,11 +4,16 @@ import static controller.ControllerCadCidade.codigo;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.DAO.BairroDAO;
+import model.DAO.CidadeDAO;
+import model.DAO.EnderecoDAO;
 import model.bo.Cidade;
+import model.bo.Endereco;
 import model.bo.Fornecedor;
 import service.CidadeService;
 import service.FornecedorService;
@@ -30,6 +35,7 @@ public class ControllerCadFornecedor implements ActionListener {
         telaCadFornecedor.getjButtonCancelar().addActionListener(this);
         telaCadFornecedor.getjButtonGravar().addActionListener(this);
         telaCadFornecedor.getjButtonSair().addActionListener(this);
+        telaCadFornecedor.getjComboBoxCidade().addActionListener(this);
 
         ativa(true);
         ligaDesliga(false);
@@ -44,6 +50,20 @@ public class ControllerCadFornecedor implements ActionListener {
     //Não foram desenvolvidas ainda as funcionalidades de persistência
     @Override
     public void actionPerformed(ActionEvent acao) {
+	  if(acao.getSource() == telaCadFornecedor.getjComboBoxCidade()){
+	      EnderecoDAO enderecoDAO = new EnderecoDAO();
+	    CidadeDAO cidadeDAO = new CidadeDAO();
+	    
+	    Cidade tempCidade = cidadeDAO.retrieve(telaCadFornecedor.getjComboBoxCidade().getSelectedItem().toString());
+
+
+          List<Endereco> list = enderecoDAO.retrieveCidade(tempCidade.getIdCidade());
+	  telaCadFornecedor.getjComboBoxCEP().removeAllItems();
+          for(Endereco item: list){
+	    telaCadFornecedor.getjComboBoxCEP().addItem(item.getCepCep());
+          }
+	  }
+    
         if (acao.getSource() == telaCadFornecedor.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
@@ -51,16 +71,22 @@ public class ControllerCadFornecedor implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadFornecedor.getjButtonGravar()) {
-            
+
             Fornecedor fornecedor = new Fornecedor();
-            
+	    
+	    EnderecoDAO enderecoDAO = new EnderecoDAO();
+
+
+
+
+
             fornecedor.setRazaoSocialFornecedor(this.telaCadFornecedor.getRazaoSocial().getText());
             fornecedor.setNome(this.telaCadFornecedor.getNomeFantasia().getText());
             fornecedor.setCnpjFornecedor(this.telaCadFornecedor.getCnpj().getText());
             fornecedor.setInscEstadualFornecedor(this.telaCadFornecedor.getInscEstadual().getText());
             fornecedor.setEmail(this.telaCadFornecedor.getEmail().getText());
             fornecedor.setCompleEndereco(this.telaCadFornecedor.getCompleEndereco().getText());
-            //fornecedor.setEndereco_idcep(this.telaCadFornecedor);
+            fornecedor.setEndereco_idcep(enderecoDAO.retrieve(this.telaCadFornecedor.getjComboBoxCEP().getSelectedItem().toString()));
             
             FornecedorService fornecedorService = new FornecedorService();
             fornecedorService.salvar(fornecedor);

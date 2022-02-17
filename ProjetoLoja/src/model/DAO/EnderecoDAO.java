@@ -70,7 +70,46 @@ public class EnderecoDAO implements InterfaceDAO<Endereco>{
         }
     }
 
-  
+      public List<Endereco> retrieveCidade(int cidade) {
+
+        String sqlExecutar     =   " SELECT idcep, cepCep, "
+                                 +   "bairro_idbairro, cidade_idcidade, logradouroCep"
+                                 + " FROM endereco WHERE endereco.cidade_idcidade = ?";
+        
+        Connection conexao     = ConnectionFactory.getConnection();
+        PreparedStatement pstm = null;
+        ResultSet rst          = null;
+        List<Endereco> enderecos = new ArrayList<>();
+        
+        try{
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setInt(1, cidade);
+
+
+            rst = pstm.executeQuery();            
+            
+            while(rst.next()){
+                Endereco endereco = new Endereco();
+                endereco.setIdCep(rst.getInt("idcep"));
+                endereco.setCepCep(rst.getString("cepCep"));              
+                endereco.setLogradouroCep(rst.getString("logradouroCep"));              
+
+		BairroDAO bairroDAO = new BairroDAO();		
+		endereco.setBairro(bairroDAO.retrieve(rst.getInt("bairro_idbairro")));
+                
+		CidadeDAO cidadeDAO = new CidadeDAO();
+		endereco.setCidade(cidadeDAO.retrieve(rst.getInt("cidade_idCidade")));
+
+		enderecos.add(endereco);
+            }
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return enderecos;       
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return null;
+        }
+    }
 
     @Override
     public Endereco retrieve(int codigo) {
@@ -155,7 +194,7 @@ public class EnderecoDAO implements InterfaceDAO<Endereco>{
                            + " WHERE endereco_idcep = ? ";
         PreparedStatement pstm = null;
         try{
-pstm = conexao.prepareStatement(sqlExecutar);
+	    pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, objeto.getCepCep());
             pstm.setString(2, objeto.getLogradouroCep());
             pstm.setInt(3, objeto.getCidade().getIdCidade());
