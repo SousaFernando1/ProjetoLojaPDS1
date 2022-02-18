@@ -7,7 +7,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.DAO.FoneFornecedorDAO;
+import model.DAO.FornecedorDAO;
 import model.bo.FoneFornecedor;
+import model.bo.Fornecedor;
 import service.FoneFornecedorService;
 import view.ModeloCadastros;
 import view.TelaBusFoneFornecedor;
@@ -45,13 +48,20 @@ public class ControllerCadFoneFornecedor implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadFoneFornecedor.getjButtonGravar()) {
-	    FoneFornecedor cor = new FoneFornecedor();
-            
-            cor.setFoneFornecedor(this.telaCadFoneFornecedor.getjFormattedTextFieldFone().getText());  
+	    FoneFornecedor foneFornecedor = new FoneFornecedor();
+	    Fornecedor fornecedor = new Fornecedor();
+	    FornecedorDAO fornecedorDAO = new FornecedorDAO();
+
+	    String tempString = this.telaCadFoneFornecedor.getjComboBoxFornecedor().getSelectedItem().toString();
+
+	    fornecedor = fornecedorDAO.retrieveCNPJ(tempString);
+	    
+            foneFornecedor.setFoneFornecedor(this.telaCadFoneFornecedor.getjFormattedTextFieldFone().getText());
+	    foneFornecedor.setFornecedor_idfornecedor(fornecedor);
 
 
-            FoneFornecedorService corService = new FoneFornecedorService();
-            corService.salvar(cor);
+            FoneFornecedorService foneFornecedorService = new FoneFornecedorService();
+            foneFornecedorService.salvar(foneFornecedor);
 
             ativa(true);
             ligaDesliga(false);

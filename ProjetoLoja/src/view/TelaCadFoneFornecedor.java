@@ -5,10 +5,14 @@
  */
 package view;
 
+import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import model.DAO.FornecedorDAO;
+import model.bo.Fornecedor;
 
 /**
  *
@@ -21,8 +25,29 @@ public class TelaCadFoneFornecedor extends javax.swing.JFrame {
      */
     public TelaCadFoneFornecedor() {
         initComponents();
+	carregarComboCNPJ();
     }
     
+  public void carregarComboCNPJ(){
+
+      FornecedorDAO fornecedorDAO = new FornecedorDAO();
+      List<Fornecedor> list = fornecedorDAO.retrieve();
+      for(Fornecedor item: list){
+        jComboBoxFornecedor.addItem(item.getCnpjFornecedor());
+      }
+
+    }    
+
+    public JComboBox<String> getjComboBoxFornecedor() {
+	return jComboBoxFornecedor;
+    }
+
+    public void setjComboBoxFornecedor(JComboBox<String> jComboBoxFornecedor) {
+	this.jComboBoxFornecedor = jComboBoxFornecedor;
+    }
+
+
+
     public JButton getjButtonBuscar() {
         return jButtonBuscar;
     }
@@ -88,6 +113,8 @@ public class TelaCadFoneFornecedor extends javax.swing.JFrame {
         jPanelDados = new javax.swing.JPanel();
         jLabelFone = new javax.swing.JLabel();
         jFormattedTextFieldFone = new javax.swing.JFormattedTextField();
+        jComboBoxFornecedor = new javax.swing.JComboBox<>();
+        jLabelFone1 = new javax.swing.JLabel();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -131,6 +158,14 @@ public class TelaCadFoneFornecedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jComboBoxFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFornecedorActionPerformed(evt);
+            }
+        });
+
+        jLabelFone1.setText("CNPJ");
+
         javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
         jPanelDados.setLayout(jPanelDadosLayout);
         jPanelDadosLayout.setHorizontalGroup(
@@ -140,16 +175,24 @@ public class TelaCadFoneFornecedor extends javax.swing.JFrame {
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFormattedTextFieldFone, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelFone))
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelFone1))
+                .addContainerGap())
         );
         jPanelDadosLayout.setVerticalGroup(
             jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDadosLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jLabelFone)
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFone)
+                    .addComponent(jLabelFone1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextFieldFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFormattedTextFieldFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelDados, java.awt.BorderLayout.CENTER);
@@ -189,6 +232,10 @@ public class TelaCadFoneFornecedor extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,8 +293,10 @@ public class TelaCadFoneFornecedor extends javax.swing.JFrame {
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JComboBox<String> jComboBoxFornecedor;
     private javax.swing.JFormattedTextField jFormattedTextFieldFone;
     private javax.swing.JLabel jLabelFone;
+    private javax.swing.JLabel jLabelFone1;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelDados;

@@ -103,14 +103,14 @@ public class TelaBusFoneFornecedor extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Fone fornecedor"
+                "Fone fornecedor", "Fornecedor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {

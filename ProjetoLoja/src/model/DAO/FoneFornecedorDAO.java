@@ -2,6 +2,7 @@ package model.DAO;
 
 import java.util.List;
 import model.bo.FoneFornecedor;
+import model.bo.Fornecedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,12 +14,13 @@ public class FoneFornecedorDAO implements InterfaceDAO<FoneFornecedor>{
     public void create(FoneFornecedor objeto) {
         //Abrindo conexão
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO foneFornecedor (foneFornecedor) VALUES(?)";
+        String sqlExecutar = "INSERT INTO foneFornecedor (foneFornecedor, fornecedor_idfornecedor) VALUES(?, ?)";
         PreparedStatement pstm = null;
         
         try{
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, objeto.getFoneFornecedor());
+            pstm.setInt(2, objeto.getFornecedor_idfornecedor().getIdfornecedor());
             pstm.executeUpdate();
         } catch(Exception ex){
             ex.printStackTrace();
@@ -29,7 +31,7 @@ public class FoneFornecedorDAO implements InterfaceDAO<FoneFornecedor>{
 
     @Override
     public List<FoneFornecedor> retrieve() {
-        String sqlExecutar     =   " SELECT foneFornecedor"
+        String sqlExecutar     =   " SELECT foneFornecedor, fornecedor_idfornecedor"
                                  + " FROM foneFornecedor";
         
         Connection conexao     = ConnectionFactory.getConnection();
@@ -44,6 +46,12 @@ public class FoneFornecedorDAO implements InterfaceDAO<FoneFornecedor>{
             while(rst.next()){
                 FoneFornecedor foneFornecedor = new FoneFornecedor();
                 foneFornecedor.setFoneFornecedor(rst.getString("foneFornecedor"));
+		
+		FornecedorDAO fornecedorDAO = new FornecedorDAO();
+		Fornecedor fornecedor = new Fornecedor();
+		fornecedor = fornecedorDAO.retrieve(rst.getString("fornecedor_idfornecedor"));
+
+                foneFornecedor.setFornecedor_idfornecedor(fornecedor);
                 fones.add(foneFornecedor);
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);

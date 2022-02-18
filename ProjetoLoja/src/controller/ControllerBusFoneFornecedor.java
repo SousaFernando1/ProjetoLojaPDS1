@@ -20,7 +20,11 @@ public class ControllerBusFoneFornecedor implements ActionListener{
         
         FoneFornecedorService fornecedorService = new FoneFornecedorService();        
         for (FoneFornecedor fornecedorAtualDaLista : fornecedorService.buscar()) {
-            tabela.addRow(new Object[]{ fornecedorAtualDaLista.getFoneFornecedor()});
+            tabela.addRow(new Object[]{ 
+
+		fornecedorAtualDaLista.getFoneFornecedor(),
+		fornecedorAtualDaLista.getFornecedor_idfornecedor().getIdfornecedor()
+});
         }
     }
     @Override

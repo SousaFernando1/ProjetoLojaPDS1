@@ -62,6 +62,7 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor>{
         
         try{
             pstm = conexao.prepareStatement(sqlExecutar);
+
             rst = pstm.executeQuery();            
             
             while(rst.next()){
@@ -89,6 +90,9 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor>{
             return null;
         }
     }
+
+
+
     @Override
     public Fornecedor retrieve(int codigo) {
         String sqlExecutar     =   " SELECT idfornecedor, "
@@ -135,6 +139,53 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor>{
         }
           
     }
+
+public Fornecedor retrieveCNPJ(String CNPJ) {
+        String sqlExecutar     =   " SELECT idfornecedor, "
+                                   + "razaoSocialFornecedor, "
+                                   + "nomeFantasiaFornecedor, "
+                                   + "cnpjFornecedor, "
+                                   + "inscEstadualFornecedor, "
+                                   + "emailFornecedor, "
+                                   + "compleEnderecofornecedor, "
+                                   + "endereco_idcep "
+                                   + "FROM fornecedor "
+                                   + "WHERE fornecedor.cnpjFornecedor = ?";
+        
+        Connection conexao     = ConnectionFactory.getConnection();
+        PreparedStatement pstm = null;
+        ResultSet rst          = null;
+        
+        try{
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, CNPJ);
+            
+            rst = pstm.executeQuery();  
+            Fornecedor fornecedor = new Fornecedor();
+            while(rst.next()){
+                fornecedor.setIdfornecedor(rst.getInt("idfornecedor"));
+                fornecedor.setRazaoSocialFornecedor(rst.getString("razaoSocialFornecedor"));
+                fornecedor.setNome(rst.getString("nomeFantasiaFornecedor"));
+                fornecedor.setCnpjFornecedor(rst.getString("cnpjFornecedor"));
+                fornecedor.setInscEstadualFornecedor(rst.getString("inscEstadualFornecedor"));
+                fornecedor.setEmail(rst.getString("emailFornecedor"));
+                fornecedor.setCompleEndereco(rst.getString("compleEnderecofornecedor"));
+
+		System.out.println(rst.getString("endereco_idcep"));
+
+                EnderecoDAO endereco = new EnderecoDAO();
+                fornecedor.setEndereco_idcep(endereco.retrieve(rst.getString("endereco_idcep")));
+            }
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return fornecedor; 
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return null;
+        }
+          
+    }
+
 
     @Override
     public Fornecedor retrieve(String nomeFantasiaFornecedor) {
