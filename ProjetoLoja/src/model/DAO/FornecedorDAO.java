@@ -91,14 +91,14 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor>{
     }
     @Override
     public Fornecedor retrieve(int codigo) {
-        String sqlExecutar     =   " SELECT "
+        String sqlExecutar     =   " SELECT idfornecedor, "
                                    + "razaoSocialFornecedor, "
                                    + "nomeFantasiaFornecedor, "
                                    + "cnpjFornecedor, "
                                    + "inscEstadualFornecedor, "
                                    + "emailFornecedor, "
                                    + "compleEnderecofornecedor, "
-                                   + "endereco_idcep, "
+                                   + "endereco_idcep "
                                    + "FROM fornecedor "
                                    + "WHERE fornecedor.idfornecedor = ?";
         
@@ -138,14 +138,14 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor>{
 
     @Override
     public Fornecedor retrieve(String nomeFantasiaFornecedor) {
-        String sqlExecutar     =   " SELECT "
+        String sqlExecutar     =   " SELECT idfornecedor, "
                                    + "razaoSocialFornecedor, "
                                    + "nomeFantasiaFornecedor, "
                                    + "cnpjFornecedor, "
                                    + "inscEstadualFornecedor, "
                                    + "emailFornecedor, "
                                    + "compleEnderecofornecedor, "
-                                   + "endereco_idcep, "
+                                   + "endereco_idcep "
                                    + "FROM fornecedor "
                                    + "WHERE fornecedor.idfornecedor = ?";
         Connection conexao     = ConnectionFactory.getConnection();

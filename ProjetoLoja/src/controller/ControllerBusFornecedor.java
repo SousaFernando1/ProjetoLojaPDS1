@@ -28,7 +28,7 @@ public class ControllerBusFornecedor implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.telaBusFornecedor.getjButtonCarregar()){
-         ControllerCadCidade.codigo = 
+         ControllerCadFornecedor.codigo = 
          (int)this.telaBusFornecedor.getjTable1().getValueAt(this.telaBusFornecedor.getjTable1().getSelectedRow(), 0);
          this.telaBusFornecedor.dispose();
         }else if(e.getSource() == this.telaBusFornecedor.getjButtonSair()){

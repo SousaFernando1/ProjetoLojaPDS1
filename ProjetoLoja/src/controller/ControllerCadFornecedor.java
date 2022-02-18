@@ -107,8 +107,13 @@ public class ControllerCadFornecedor implements ActionListener {
                 ligaDesliga(true);
 
                 this.telaCadFornecedor.getjTFIdFornecedor().setText(fornecedor.getIdfornecedor() + "");
+                this.telaCadFornecedor.getRazaoSocial().setText(fornecedor.getRazaoSocialFornecedor());
                 this.telaCadFornecedor.getNomeFantasia().setText(fornecedor.getNome());
                 this.telaCadFornecedor.getCnpj().setText(fornecedor.getCnpjFornecedor());
+                this.telaCadFornecedor.getInscEstadual().setText(fornecedor.getInscEstadualFornecedor());
+                this.telaCadFornecedor.getEmail().setText(fornecedor.getEmail());
+                this.telaCadFornecedor.getCompleEndereco().setText(fornecedor.getCompleEndereco());
+                this.telaCadFornecedor.getjComboBoxCEP().setSelectedItem(fornecedor.getEndereco_idcep());
 
                 this.telaCadFornecedor.getjTFIdFornecedor().setEnabled(false);
             }
