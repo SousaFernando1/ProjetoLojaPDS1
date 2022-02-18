@@ -61,11 +61,14 @@ public class ControllerCadBairro implements ActionListener {
             bairro.setDescricaoBairro(this.telaCadBairro.getjTFNomeBairro().getText());
             bairro.setCidadeMae(cidade.getIdCidade());  
   
-
-
-
             BairroService bairroService = new BairroService();
-            bairroService.salvar(bairro);
+            if (this.telaCadBairro.getjTFIdCidade().getText().trim().equalsIgnoreCase("")) {
+                bairroService.salvar(bairro);
+            } else {
+                cidade.setIdCidade(Integer.parseInt(this.telaCadBairro.getjTFIdCidade().getText()));
+                System.out.println("teste");
+                bairroService.atualizar(bairro);
+            }
 
             ativa(true);
             ligaDesliga(false);

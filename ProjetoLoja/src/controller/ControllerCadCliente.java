@@ -85,7 +85,12 @@ public class ControllerCadCliente implements ActionListener {
             cliente.setEndereco_idcep(enderecoDAO.retrieve(this.telaCadCliente.getjComboBoxCep().getSelectedItem().toString()));
             
             ClienteService clienteService = new ClienteService();
-            clienteService.salvar(cliente);
+            if (this.telaCadCliente.getjTFIdCliente().getText().trim().equalsIgnoreCase("")) {
+                clienteService.salvar(cliente);
+            } else {
+                cliente.setIdcliente(Integer.parseInt(this.telaCadCliente.getjTFIdCliente().getText()));
+                clienteService.atualizar(cliente);
+            }
 
             ativa(true);
             ligaDesliga(false);

@@ -226,6 +226,7 @@ public class TelaCadProduto extends javax.swing.JFrame {
 
         jLabel2.setText("Nome:");
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -238,8 +239,12 @@ public class TelaCadProduto extends javax.swing.JFrame {
         jLId2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLId2.setText("Tipo de Produto:");
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione" }));
+
         jLId3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLId3.setText("Marca:");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione" }));
 
         jLabel3.setText("Valor:");
 
@@ -305,7 +310,7 @@ public class TelaCadProduto extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTFValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelDados, java.awt.BorderLayout.LINE_START);

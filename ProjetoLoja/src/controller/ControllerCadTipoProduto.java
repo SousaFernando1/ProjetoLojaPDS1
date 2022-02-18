@@ -51,7 +51,12 @@ public class ControllerCadTipoProduto implements ActionListener {
 
 
             TipoProdutoService tipoProdutoService = new TipoProdutoService();
-            tipoProdutoService.salvar(tipoProduto);
+            if (this.telaCadTipoProduto.getjTFIdTipoProduto().getText().trim().equalsIgnoreCase("")) {
+                tipoProdutoService.salvar(tipoProduto);
+            } else {
+                tipoProduto.setIdTipoProduto(Integer.parseInt(this.telaCadTipoProduto.getjTFIdTipoProduto().getText()));
+                tipoProdutoService.atualizar(tipoProduto);
+            }
 
 
             ativa(true);
@@ -71,7 +76,7 @@ public class ControllerCadTipoProduto implements ActionListener {
                 ativa(false);
                 ligaDesliga(true);
 
-                this.telaCadTipoProduto.getjTFIdTipoProduto();
+                this.telaCadTipoProduto.getjTFIdTipoProduto().setText(tipoProduto.getIdTipoProduto() + "");
                 this.telaCadTipoProduto.getjTFDescricaoTipoProduto().setText(tipoProduto.getDescricaoTipoProduto());
 //                this.telaCadBairro.getjTFUF().setText(cidade.getUfCidade());
 

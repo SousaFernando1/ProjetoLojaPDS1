@@ -129,7 +129,7 @@ public class CidadeDAO implements InterfaceDAO<Cidade>{
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = " UPDATE cidade "
                            + " SET descricaoCidade   = ? ,"
-                           + " SET ufCidade = ? "
+                           + " ufCidade = ? "
                            + " WHERE cidade.idcidade = ? ";
         PreparedStatement pstm = null;
         try{

@@ -49,7 +49,13 @@ public class ControllerCadTamanho implements ActionListener {
 
 
             TamanhoService tamanhoService = new TamanhoService();
-            tamanhoService.salvar(tamanho);
+          
+            if (this.telaCadTamanho.getIdTamanho().getText().trim().equalsIgnoreCase("")) {
+                tamanhoService.salvar(tamanho);
+            } else {
+                tamanho.setIdTamanho(Integer.parseInt(this.telaCadTamanho.getIdTamanho().getText()));
+                tamanhoService.atualizar(tamanho);
+            }
 
 
 
