@@ -16,11 +16,13 @@ import model.bo.Tamanho;
 import model.bo.TipoProduto;
 import service.ProdutoService;
 import view.ModeloCadastros;
+import view.TelaBusProduto;
 import view.TelaCadProduto;
 
 public class ControllerCadProduto implements ActionListener {
 
     TelaCadProduto telaCadProduto;
+    public static int codigo;
 
     public ControllerCadProduto(TelaCadProduto telaCadProduto) {
         this.telaCadProduto = telaCadProduto;
@@ -90,6 +92,26 @@ public class ControllerCadProduto implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadProduto.getjButtonBuscar()) {
+            codigo = 0;
+            //chamada da tela da busca
+            TelaBusProduto telaBusProduto = new TelaBusProduto(null, true);
+            ControllerBusProduto controllerBusProduto = new ControllerBusProduto(telaBusProduto);
+            telaBusProduto.setVisible(true);
+
+            if (codigo != 0) {
+                Produto produto;
+                ProdutoService produtoService = new ProdutoService();
+                produto = produtoService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadProduto.getjTFIdProduto().setText(produto.getIdproduto() + "");
+                this.telaCadProduto.getjTFNome().setText(produto.getDescricaoProduto());
+                this.telaCadProduto.getjTFValor().setText(produto.getValProduto() + "");
+
+                this.telaCadProduto.getjTFIdProduto().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadProduto.getjButtonSair()) {
 	    this.telaCadProduto.dispose();
         }

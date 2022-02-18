@@ -3,26 +3,40 @@ package controller;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.DAO.CidadeDAO;
+import model.DAO.EnderecoDAO;
+import model.bo.Cidade;
+import model.bo.Endereco;
+import model.bo.Fornecedor;
+import model.bo.Vendedor;
+import service.FornecedorService;
+import service.VendedorService;
 import view.ModeloCadastros;
+import view.TelaBusCidade;
+import view.TelaBusVendedor;
 import view.TelaCadVendedor;
 
 public class ControllerCadVendedor implements ActionListener {
 
     TelaCadVendedor telaCadVendedor;
+    public static int codigo;
 
     public ControllerCadVendedor(TelaCadVendedor telaCadVendedor) {
         this.telaCadVendedor = telaCadVendedor;
+        
 
         telaCadVendedor.getjButtonBuscar().addActionListener(this);
         telaCadVendedor.getjButtonNovo().addActionListener(this);
         telaCadVendedor.getjButtonCancelar().addActionListener(this);
         telaCadVendedor.getjButtonGravar().addActionListener(this);
         telaCadVendedor.getjButtonSair().addActionListener(this);
-
+        telaCadVendedor.getjComboBoxCidade().addActionListener(this);
+        
         ativa(true);
         ligaDesliga(false);
 
@@ -32,6 +46,19 @@ public class ControllerCadVendedor implements ActionListener {
     //Não foram desenvolvidas ainda as funcionalidades de persistência
     @Override
     public void actionPerformed(ActionEvent acao) {
+        if(acao.getSource() == telaCadVendedor.getjComboBoxCidade()){
+	    EnderecoDAO enderecoDAO = new EnderecoDAO();
+	    CidadeDAO cidadeDAO = new CidadeDAO();
+	    
+	    Cidade tempCidade = cidadeDAO.retrieve(telaCadVendedor.getjComboBoxCidade().getSelectedItem().toString());
+
+
+          List<Endereco> list = enderecoDAO.retrieveCidade(tempCidade.getIdCidade());
+	  telaCadVendedor.getjComboBoxCEP().removeAllItems();
+          for(Endereco item: list){
+	    telaCadVendedor.getjComboBoxCEP().addItem(item.getCepCep());
+          }
+	  }
         if (acao.getSource() == telaCadVendedor.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
@@ -39,9 +66,46 @@ public class ControllerCadVendedor implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadVendedor.getjButtonGravar()) {
+            
+            Vendedor vendedor = new Vendedor();
+	    
+	    EnderecoDAO enderecoDAO = new EnderecoDAO();
+            
+            vendedor.setNome(this.telaCadVendedor.getNome().getText());
+            vendedor.setCpfVendedor(this.telaCadVendedor.getCpf().getText());
+            vendedor.setEmail(this.telaCadVendedor.getEmail().getText());
+            vendedor.setFoneVendedor(this.telaCadVendedor.getFone().getText());
+            vendedor.setPercentComissaoVenda(Float.parseFloat(this.telaCadVendedor.getPercComissaoVenda().toString()));
+            vendedor.setPercentComissaoVenda(Float.parseFloat(this.telaCadVendedor.getPercComissaoRecebto().toString()));
+            vendedor.setCompleEndereco(this.telaCadVendedor.getCompleEndereco().getText());
+            vendedor.setEndereco_idcep(enderecoDAO.retrieve(this.telaCadVendedor.getjComboBoxCEP().getSelectedItem().toString()));
+            
+            VendedorService vendedorService = new VendedorService();
+            vendedorService.salvar(vendedor);
+            
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadVendedor.getjButtonBuscar()) {
+            codigo = 0;
+            //chamada da tela da busca
+            TelaBusVendedor telaBusVendedor = new TelaBusVendedor(null, true);
+            ControllerBusVendedor controllerBusVendedor = new ControllerBusVendedor(telaBusVendedor);
+            telaBusVendedor.setVisible(true);
+
+            if (codigo != 0) {
+                Vendedor vendedor;
+                VendedorService vendedorService = new VendedorService();
+                vendedor = vendedorService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                //this.telaCadVendedor.getjTFIdVendedor().setText(vendedor.getIdvendedor()+ "");
+                this.telaCadVendedor.getNome().setText(vendedor.getNome());
+                this.telaCadVendedor.getCpf().setText(vendedor.getCpfVendedor());
+
+                //this.telaCadVendedor.getjTFIdVendedor().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadVendedor.getjButtonSair()) {
 	    this.telaCadVendedor.dispose();
         }

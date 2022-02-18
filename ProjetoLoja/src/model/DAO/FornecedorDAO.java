@@ -45,15 +45,15 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor>{
 
     @Override
     public List<Fornecedor> retrieve() {
-        String sqlExecutar     =    " SELECT "
+        String sqlExecutar     =    " SELECT idfornecedor, "
                                    + "razaoSocialFornecedor, "
                                    + "nomeFantasiaFornecedor, "
                                    + "cnpjFornecedor, "
                                    + "inscEstadualFornecedor, "
                                    + "emailFornecedor, "
                                    + "compleEnderecofornecedor, "
-                                   + "endereco_idcep, "
-                                   + "FROM fornecedor ";
+                                   + "endereco_idcep "
+                                   + " FROM fornecedor ";
         
         Connection conexao     = ConnectionFactory.getConnection();
         PreparedStatement pstm = null;

@@ -10,16 +10,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.DAO.BairroDAO;
 import model.DAO.CidadeDAO;
+import model.DAO.EnderecoDAO;
 import model.bo.Bairro;
 import model.bo.Cliente;
 import model.bo.Cidade;
+import model.bo.Endereco;
 import service.ClienteService;
 import view.ModeloCadastros;
+import view.TelaBusCliente;
 import view.TelaCadCliente;
 
 public class ControllerCadCliente implements ActionListener {
 
     TelaCadCliente telaCadCliente;
+    public static int codigo;
 
     public ControllerCadCliente(TelaCadCliente telaCadCliente) {
         this.telaCadCliente = telaCadCliente;
@@ -42,16 +46,16 @@ public class ControllerCadCliente implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent acao) {
 	if(acao.getSource() == telaCadCliente.getjComboBoxCidade()){
-	  BairroDAO bairroDAO = new BairroDAO();
+            EnderecoDAO enderecoDAO = new EnderecoDAO();
 	    CidadeDAO cidadeDAO = new CidadeDAO();
 
 	    Cidade tempCidade = cidadeDAO.retrieve(telaCadCliente.getjComboBoxCidade().getSelectedItem().toString());
 
 
-          List<Bairro> list = bairroDAO.retrieveDesc(tempCidade.getIdCidade());
-	  telaCadCliente.getjComboBoxBairro().removeAllItems();
-          for(Bairro item: list){
-	    telaCadCliente.getjComboBoxBairro().addItem(item.getDescricaoBairro());
+          List<Endereco> list = enderecoDAO.retrieveCidade(tempCidade.getIdCidade());
+	  telaCadCliente.getjComboBoxCep().removeAllItems();
+          for(Endereco item: list){
+	    telaCadCliente.getjComboBoxCep().addItem(item.getCepCep());
           }
 
 //	    System.out.println(telaCadCliente.getjComboBoxCidade().getSelectedItem().toString());
@@ -65,7 +69,8 @@ public class ControllerCadCliente implements ActionListener {
         } else if (acao.getSource() == telaCadCliente.getjButtonGravar()) {
 
             Cliente cliente = new Cliente();
-
+            
+            EnderecoDAO enderecoDAO = new EnderecoDAO();
 
 //            cidade.setUfCidade(this.telaCadCidade.getjTFUF().getText());
 
@@ -76,13 +81,35 @@ public class ControllerCadCliente implements ActionListener {
 	    cliente.setRgCliente(this.telaCadCliente.getRg().getText());
 	    cliente.setCompleEndereco(this.telaCadCliente.getCompEndereco().getText());
 	    cliente.setFoneCliente(this.telaCadCliente.getFone().getText());
-
+            cliente.setCompleEndereco(this.telaCadCliente.getCompEndereco().getText());
+            cliente.setEndereco_idcep(enderecoDAO.retrieve(this.telaCadCliente.getjComboBoxCep().getSelectedItem().toString()));
+            
             ClienteService clienteService = new ClienteService();
             clienteService.salvar(cliente);
 
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCliente.getjButtonBuscar()) {
+            codigo = 0;
+            //chamada da tela da busca
+            TelaBusCliente telaBusCliente = new TelaBusCliente(null, true);
+            ControllerBusCliente controllerBusCliente = new ControllerBusCliente(telaBusCliente);
+            telaBusCliente.setVisible(true);
+
+            if (codigo != 0) {
+                Cliente cliente;
+                ClienteService clienteService = new ClienteService();
+                cliente = clienteService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadCliente.getjTFIdCliente().setText(cliente.getIdcliente()+ "");
+                this.telaCadCliente.getNome().setText(cliente.getNome());
+                this.telaCadCliente.getCpf().setText(cliente.getCpfCliente());
+
+                this.telaCadCliente.getjTFIdCliente().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadCliente.getjButtonSair()) {
 	    this.telaCadCliente.dispose();
         }

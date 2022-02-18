@@ -25,13 +25,14 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
         initComponents();
 	carregarComboCidade();
     }
-	public void carregarComboCidade(){
+    
+    public void carregarComboCidade(){
 
-          CidadeDAO cidadeDAO = new CidadeDAO();
-          List<Cidade> list = cidadeDAO.retrieve();
-          for(Cidade item: list){
-	    jComboBoxCidade.addItem(item.getDescricaoCidade());
-          }
+      CidadeDAO cidadeDAO = new CidadeDAO();
+      List<Cidade> list = cidadeDAO.retrieve();
+      for(Cidade item: list){
+        jComboBoxCidade.addItem(item.getDescricaoCidade());
+      }
 
     }    
     public JPanel getjPanelDados() {
@@ -64,10 +65,10 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
         compleEndereco = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         jComboBoxCEP = new javax.swing.JComboBox<>();
         jComboBoxCidade = new javax.swing.JComboBox<>();
+        jTFIdFornecedor = new javax.swing.JTextField();
+        jLId = new javax.swing.JLabel();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -125,8 +126,6 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
 
         jLabel8.setText("CEP:");
 
-        jLabel9.setText("Logradouro:");
-
         jComboBoxCEP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dsa" }));
 
         jComboBoxCidade.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +134,11 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
             }
         });
 
+        jTFIdFornecedor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+
+        jLId.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLId.setText("ID:");
+
         javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
         jPanelDados.setLayout(jPanelDadosLayout);
         jPanelDadosLayout.setHorizontalGroup(
@@ -142,10 +146,6 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
             .addGroup(jPanelDadosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDadosLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7))
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,14 +180,22 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBoxCEP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(jComboBoxCEP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanelDadosLayout.createSequentialGroup()
+                                .addComponent(jLId)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTFIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 27, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelDadosLayout.setVerticalGroup(
             jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDadosLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDadosLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLId))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,15 +219,11 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jComboBoxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(compleEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
 
         getContentPane().add(jPanelDados, java.awt.BorderLayout.CENTER);
@@ -346,6 +350,7 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSair;
     private javax.swing.JComboBox<String> jComboBoxCEP;
     private javax.swing.JComboBox<String> jComboBoxCidade;
+    private javax.swing.JLabel jLId;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -354,12 +359,11 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelDados;
     private javax.swing.JPanel jPanelTitulo;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTFIdFornecedor;
     private javax.swing.JTextField nomeFantasia;
     private javax.swing.JTextField razaoSocial;
     // End of variables declaration//GEN-END:variables
@@ -382,6 +386,14 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
 
     public javax.swing.JButton getjButtonSair() {
         return jButtonSair;
+    }
+
+    public JTextField getjTFIdFornecedor() {
+        return jTFIdFornecedor;
+    }
+
+    public void setjTFIdFornecedor(JTextField jTFIdFornecedor) {
+        this.jTFIdFornecedor = jTFIdFornecedor;
     }
 
     public JTextField getCnpj() {

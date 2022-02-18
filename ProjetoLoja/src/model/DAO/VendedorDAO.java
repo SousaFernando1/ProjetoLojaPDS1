@@ -47,7 +47,8 @@ public class VendedorDAO implements InterfaceDAO<Vendedor>{
 
     @Override
     public List<Vendedor> retrieve() {
-        String sqlExecutar     =   " SELECT nomeVendedor, "
+        String sqlExecutar     =   " SELECT idvendedor"
+                                   + "nomeVendedor, "
 				   + "cpfVendedor, "
 				   + "emailVendedor, "
 				   + "foneVendedor, "

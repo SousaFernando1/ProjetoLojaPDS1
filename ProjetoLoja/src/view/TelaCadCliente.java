@@ -54,16 +54,24 @@ public class TelaCadCliente extends javax.swing.JFrame {
 //          }
 //    }      
 
+    public JTextField getjTFIdCliente() {
+        return jTFIdCliente;
+    }
+
+    public void setjTFIdCliente(JTextField jTFIdCliente) {
+        this.jTFIdCliente = jTFIdCliente;
+    }
+        
     public JPanel getjPanelDados() {
         return jPanelDados;
     }
 
     public JComboBox<String> getjComboBox1() {
-	return jComboBoxBairro;
+	return jComboBoxCep;
     }
 
     public void setjComboBox1(JComboBox<String> jComboBox1) {
-	this.jComboBoxBairro = jComboBox1;
+	this.jComboBoxCep = jComboBox1;
     }
 
     public JComboBox<String> getjComboBox2() {
@@ -146,14 +154,6 @@ public class TelaCadCliente extends javax.swing.JFrame {
 	this.jLabel8 = jLabel8;
     }
 
-    public JLabel getjLabel9() {
-	return jLabel9;
-    }
-
-    public void setjLabel9(JLabel jLabel9) {
-	this.jLabel9 = jLabel9;
-    }
-
     public JLabel getjLabelTitulo() {
 	return jLabelTitulo;
     }
@@ -176,14 +176,6 @@ public class TelaCadCliente extends javax.swing.JFrame {
 
     public void setjPanelTitulo(JPanel jPanelTitulo) {
 	this.jPanelTitulo = jPanelTitulo;
-    }
-
-    public JTextField getLogradouro() {
-	return Logradouro;
-    }
-
-    public void setLogradouro(JTextField Logradouro) {
-	this.Logradouro = Logradouro;
     }
 
     public JTextField getNome() {
@@ -235,11 +227,11 @@ public class TelaCadCliente extends javax.swing.JFrame {
     }
 
     public JComboBox<String> getjComboBoxBairro() {
-	return jComboBoxBairro;
+	return jComboBoxCep;
     }
 
     public void setjComboBoxBairro(JComboBox<String> jComboBoxBairro) {
-	this.jComboBoxBairro = jComboBoxBairro;
+	this.jComboBoxCep = jComboBoxBairro;
     }
 
     public JComboBox<String> getjComboBoxCidade() {
@@ -257,6 +249,16 @@ public class TelaCadCliente extends javax.swing.JFrame {
     public void setRg(JTextField rg) {
 	this.rg = rg;
     }
+
+    public JComboBox<String> getjComboBoxCep() {
+        return jComboBoxCep;
+    }
+
+    public void setjComboBoxCep(JComboBox<String> jComboBoxCep) {
+        this.jComboBoxCep = jComboBoxCep;
+    }
+    
+    
 
 
 
@@ -286,12 +288,12 @@ public class TelaCadCliente extends javax.swing.JFrame {
         compEndereco = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        Logradouro = new javax.swing.JTextField();
-        jComboBoxBairro = new javax.swing.JComboBox<>();
+        jComboBoxCep = new javax.swing.JComboBox<>();
         jComboBoxCidade = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         cpf = new javax.swing.JTextField();
+        jTFIdCliente = new javax.swing.JTextField();
+        jLId = new javax.swing.JLabel();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -347,14 +349,11 @@ public class TelaCadCliente extends javax.swing.JFrame {
 
         jLabel7.setText("Cidade:");
 
-        jLabel8.setText("Bairro:");
+        jLabel8.setText("Cep:");
 
-        jLabel9.setText("Logradouro:");
-
-        jComboBoxBairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:" }));
-        jComboBoxBairro.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxCep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxBairroActionPerformed(evt);
+                jComboBoxCepActionPerformed(evt);
             }
         });
 
@@ -366,6 +365,11 @@ public class TelaCadCliente extends javax.swing.JFrame {
 
         jLabel10.setText("Fone:");
 
+        jTFIdCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+
+        jLId.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLId.setText("ID:");
+
         javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
         jPanelDados.setLayout(jPanelDadosLayout);
         jPanelDadosLayout.setHorizontalGroup(
@@ -374,55 +378,60 @@ public class TelaCadCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(Logradouro))
-                    .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(compEndereco))
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
-                        .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanelDadosLayout.createSequentialGroup()
+                                    .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel4))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanelDadosLayout.createSequentialGroup()
+                                            .addComponent(jComboBoxCidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel8)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jComboBoxCep, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(jPanelDadosLayout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Nome))
+                                .addGroup(jPanelDadosLayout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cpf)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(fone))
+                                .addGroup(jPanelDadosLayout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(dtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(rg)))
                             .addGroup(jPanelDadosLayout.createSequentialGroup()
-                                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel4))
+                                .addComponent(jLId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanelDadosLayout.createSequentialGroup()
-                                        .addComponent(jComboBoxCidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBoxBairro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(jPanelDadosLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Nome))
-                            .addGroup(jPanelDadosLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(cpf)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fone))
-                            .addGroup(jPanelDadosLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(rg)))
-                        .addGap(0, 4, Short.MAX_VALUE)))
+                                .addComponent(jTFIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 31, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelDadosLayout.setVerticalGroup(
             jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDadosLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLId))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -447,16 +456,12 @@ public class TelaCadCliente extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jComboBoxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Logradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
+                    .addComponent(jComboBoxCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(compEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelDados, java.awt.BorderLayout.CENTER);
@@ -507,9 +512,9 @@ public class TelaCadCliente extends javax.swing.JFrame {
 	
     }//GEN-LAST:event_jComboBoxCidadeActionPerformed
 
-    private void jComboBoxBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBairroActionPerformed
+    private void jComboBoxCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCepActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxBairroActionPerformed
+    }//GEN-LAST:event_jComboBoxCepActionPerformed
 
     /**
      * @param args the command line arguments
@@ -578,7 +583,6 @@ public class TelaCadCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Logradouro;
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField compEndereco;
     private javax.swing.JTextField cpf;
@@ -590,8 +594,9 @@ public class TelaCadCliente extends javax.swing.JFrame {
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSair;
-    private javax.swing.JComboBox<String> jComboBoxBairro;
+    private javax.swing.JComboBox<String> jComboBoxCep;
     private javax.swing.JComboBox<String> jComboBoxCidade;
+    private javax.swing.JLabel jLId;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -601,11 +606,11 @@ public class TelaCadCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelDados;
     private javax.swing.JPanel jPanelTitulo;
+    private javax.swing.JTextField jTFIdCliente;
     private javax.swing.JTextField rg;
     // End of variables declaration//GEN-END:variables
 

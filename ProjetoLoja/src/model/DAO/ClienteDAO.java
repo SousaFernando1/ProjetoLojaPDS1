@@ -39,7 +39,8 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
 
     @Override
     public List<Cliente> retrieve() {
-        String sqlExecutar     =   " SELECT nomeCliente, "
+        String sqlExecutar     =   " SELECT idcliente, "
+                                   + "nomeCliente, "
 				   + "dtNasCliente, "
 				   + "cpfCliente, "
 				   + "rgCliente, "

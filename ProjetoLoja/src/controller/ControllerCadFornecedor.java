@@ -19,6 +19,8 @@ import service.CidadeService;
 import service.FornecedorService;
 import view.ModeloCadastros;
 import view.TelaBusCidade;
+import view.TelaBusFoneFornecedor;
+import view.TelaBusFornecedor;
 import view.TelaCadFoneFornecedor;
 import view.TelaCadFornecedor;
 
@@ -51,7 +53,7 @@ public class ControllerCadFornecedor implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent acao) {
 	  if(acao.getSource() == telaCadFornecedor.getjComboBoxCidade()){
-	      EnderecoDAO enderecoDAO = new EnderecoDAO();
+	    EnderecoDAO enderecoDAO = new EnderecoDAO();
 	    CidadeDAO cidadeDAO = new CidadeDAO();
 	    
 	    Cidade tempCidade = cidadeDAO.retrieve(telaCadFornecedor.getjComboBoxCidade().getSelectedItem().toString());
@@ -76,10 +78,6 @@ public class ControllerCadFornecedor implements ActionListener {
 	    
 	    EnderecoDAO enderecoDAO = new EnderecoDAO();
 
-
-
-
-
             fornecedor.setRazaoSocialFornecedor(this.telaCadFornecedor.getRazaoSocial().getText());
             fornecedor.setNome(this.telaCadFornecedor.getNomeFantasia().getText());
             fornecedor.setCnpjFornecedor(this.telaCadFornecedor.getCnpj().getText());
@@ -94,26 +92,26 @@ public class ControllerCadFornecedor implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadFornecedor.getjButtonBuscar()) {
-//            codigo = 0;
-//            //chamada da tela da busca
-//            TelaBusCidade telaBusCidade = new TelaBusCidade(null, true);
-//            ControllerBusCidade controllerBusCidade = new ControllerBusCidade(telaBusCidade);
-//            telaBusCidade.setVisible(true);
-//
-//            if (codigo != 0) {
-//                Fornecedor fornecedor;
-//                FornecedorService fornecedorService = new FornecedorService();
-//                fornecedor = fornecedorService.buscar(codigo);
-//
-//                ativa(false);
-//                ligaDesliga(true);
-//
-//                this.telaCadFornecedor.getj().setText(cidade.getIdCidade() + "");
-//                this.telaCadFornecedor.getjTFNomeCidade().setText(cidade.getDescricaoCidade());
-//                this.telaCadFornecedor.getjTFUF().setText(cidade.getUfCidade());
-//
-//                this.telaCadCidade.getjTFIdCidade().setEnabled(false);
-//            }
+            codigo = 0;
+            //chamada da tela da busca
+            TelaBusFornecedor telaBusFornecedor = new TelaBusFornecedor(null, true);
+            ControllerBusFornecedor controllerBusFornecedor = new ControllerBusFornecedor(telaBusFornecedor);
+            telaBusFornecedor.setVisible(true);
+
+            if (codigo != 0) {
+                Fornecedor fornecedor;
+                FornecedorService fornecedorService = new FornecedorService();
+                fornecedor = fornecedorService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadFornecedor.getjTFIdFornecedor().setText(fornecedor.getIdfornecedor() + "");
+                this.telaCadFornecedor.getNomeFantasia().setText(fornecedor.getNome());
+                this.telaCadFornecedor.getCnpj().setText(fornecedor.getCnpjFornecedor());
+
+                this.telaCadFornecedor.getjTFIdFornecedor().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadFornecedor.getjButtonSair()) {
 	    this.telaCadFornecedor.dispose();
         }
