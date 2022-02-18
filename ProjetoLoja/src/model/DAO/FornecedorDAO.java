@@ -198,7 +198,7 @@ public Fornecedor retrieveCNPJ(String CNPJ) {
                                    + "compleEnderecofornecedor, "
                                    + "endereco_idcep "
                                    + "FROM fornecedor "
-                                   + "WHERE fornecedor.idfornecedor = ?";
+                                   + "WHERE fornecedor.nomeFantasiaFornecedor = ?";
         Connection conexao     = ConnectionFactory.getConnection();
         PreparedStatement pstm = null;
         ResultSet rst          = null;

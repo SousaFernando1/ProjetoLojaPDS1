@@ -167,7 +167,7 @@ public class BairroDAO implements InterfaceDAO<Bairro>{
     public void update(Bairro objeto) {
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = " UPDATE bairro "
-                           + " SET descricaoBairro   = ? ,"
+                           + " SET descricaoBairro = ? ,"
 			   + " cidadeMae = ?"
                            + " WHERE bairro.idbairro = ? ";
         PreparedStatement pstm = null;

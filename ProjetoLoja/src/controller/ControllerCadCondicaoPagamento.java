@@ -52,7 +52,12 @@ public class ControllerCadCondicaoPagamento implements ActionListener {
 
 
             CondicaoPagamentoService condicaoPagamentoService = new CondicaoPagamentoService();
-            condicaoPagamentoService.salvar(condicaoPagamento);
+            if (this.telaCadCondicaoPagamento.getjTFIdCondicaoPagamento().getText().trim().equalsIgnoreCase("")) {
+                condicaoPagamentoService.salvar(condicaoPagamento);
+            } else {
+                condicaoPagamento.setIdcondicaoPagamento(Integer.parseInt(this.telaCadCondicaoPagamento.getjTFIdCondicaoPagamento().getText()));
+                condicaoPagamentoService.atualizar(condicaoPagamento);
+            }
 
             ativa(true);
             ligaDesliga(false);

@@ -120,8 +120,8 @@ public class TipoProdutoDAO implements InterfaceDAO<TipoProduto>{
     public void update(TipoProduto objeto) {
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = " UPDATE tipoProduto "
-                           + " SET descricaoTipoProduto = ? ,"
-                           + " WHERE tipoProduto.idtipoProtudo = ? ";
+                           + " SET descricaoTipoProduto = ? "
+                           + " WHERE tipoProduto.idtipoProduto = ? ";
         PreparedStatement pstm = null;
         try{
             pstm = conexao.prepareStatement(sqlExecutar);

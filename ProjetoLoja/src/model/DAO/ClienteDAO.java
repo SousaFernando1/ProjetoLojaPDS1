@@ -89,7 +89,8 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
     }
     @Override
     public Cliente retrieve(int codigo) {
-        String sqlExecutar     =   " SELECT nomeCliente, "
+        String sqlExecutar     =   " SELECT idcliente, "
+                                   + "nomeCliente, "
 				   + "dtNasCliente, "
 				   + "cpfCliente, "
 				   + "rgCliente, "
@@ -139,7 +140,8 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
 
     @Override
     public Cliente retrieve(String nomeCliente) {
-        String sqlExecutar     =   " SELECT nomeCliente, "
+        String sqlExecutar     =   " SELECT idcliente, "
+                                   + "nomeCliente, "
 				   + "dtNasCliente, "
 				   + "cpfCliente, "
 				   + "rgCliente, "
@@ -149,7 +151,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
 				   + "compleEnderecoCliente, "
 				   + "endereco_idcep "
 				   + " FROM cliente"
-				   + "WHERE cliente.idcliente = ?";
+				   + "WHERE cliente.nomeCliente = ?";
         Connection conexao     = ConnectionFactory.getConnection();
         PreparedStatement pstm = null;
         ResultSet rst          = null;

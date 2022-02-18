@@ -47,7 +47,7 @@ public class VendedorDAO implements InterfaceDAO<Vendedor>{
 
     @Override
     public List<Vendedor> retrieve() {
-        String sqlExecutar     =   " SELECT idvendedor"
+        String sqlExecutar     =   " SELECT idvendedor, "
                                    + "nomeVendedor, "
 				   + "cpfVendedor, "
 				   + "emailVendedor, "
@@ -97,7 +97,8 @@ public class VendedorDAO implements InterfaceDAO<Vendedor>{
     }
     @Override
     public Vendedor retrieve(int codigo) {
-        String sqlExecutar     =   " SELECT nomeVendedor, "
+        String sqlExecutar     =   " SELECT idvendedor, "
+                                   + "nomeVendedor, "
 				   + "cpfVendedor, "
 				   + "emailVendedor, "
 				   + "foneVendedor, "
@@ -106,8 +107,8 @@ public class VendedorDAO implements InterfaceDAO<Vendedor>{
 				   + "percentComissaoRecebto, "
                                    + "compleEnderecoVendedor, "
 				   + "endereco_idcep "
-				   + " FROM vendedor"
-                                   + "WHERE vendedor.idvendedor = ?";;
+				   + " FROM vendedor "
+                                   + "WHERE vendedor.idvendedor = ?";
         
         Connection conexao     = ConnectionFactory.getConnection();
         PreparedStatement pstm = null;
@@ -147,7 +148,8 @@ public class VendedorDAO implements InterfaceDAO<Vendedor>{
 
     @Override
     public Vendedor retrieve(String nomeVendedor) {
-        String sqlExecutar     =   " SELECT nomeVendedor, "
+        String sqlExecutar     =   " SELECT idvendedor, "
+                                   + "nomeVendedor, "
 				   + "cpfVendedor, "
 				   + "emailVendedor, "
 				   + "foneVendedor, "

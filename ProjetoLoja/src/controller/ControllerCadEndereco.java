@@ -90,7 +90,13 @@ public class ControllerCadEndereco implements ActionListener {
 	    endereco.setCidade(cidadeDAO.retrieve(tempString2));
 
             EnderecoService enderecoService = new EnderecoService();
-            enderecoService.salvar(endereco);
+           
+            if (this.telaCadEndereco.getjTFIdCidade().getText().trim().equalsIgnoreCase("")) {
+                enderecoService.salvar(endereco);
+            } else {
+                endereco.setIdCep(Integer.parseInt(this.telaCadEndereco.getjTFIdCidade().getText()));
+                enderecoService.atualizar(endereco);
+            }
 
             ativa(true);
             ligaDesliga(false);

@@ -50,7 +50,13 @@ public class ControllerCadCidade implements ActionListener {
             cidade.setUfCidade(this.telaCadCidade.getjTFUF().getText());
             
             CidadeService cidService = new CidadeService();
-            cidService.salvar(cidade);
+            
+            if (this.telaCadCidade.getjTFIdCidade().getText().trim().equalsIgnoreCase("")) {
+                cidService.salvar(cidade);
+            } else {
+                cidade.setIdCidade(Integer.parseInt(this.telaCadCidade.getjTFIdCidade().getText()));
+                cidService.atualizar(cidade);
+            }
             
             ativa(true);
             ligaDesliga(false);

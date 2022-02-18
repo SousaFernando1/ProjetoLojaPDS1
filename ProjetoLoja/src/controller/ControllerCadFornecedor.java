@@ -87,7 +87,12 @@ public class ControllerCadFornecedor implements ActionListener {
             fornecedor.setEndereco_idcep(enderecoDAO.retrieve(this.telaCadFornecedor.getjComboBoxCEP().getSelectedItem().toString()));
             
             FornecedorService fornecedorService = new FornecedorService();
-            fornecedorService.salvar(fornecedor);
+            if (this.telaCadFornecedor.getjTFIdFornecedor().getText().trim().equalsIgnoreCase("")) {
+                fornecedorService.salvar(fornecedor);
+            } else {
+                fornecedor.setIdfornecedor(Integer.parseInt(this.telaCadFornecedor.getjTFIdFornecedor().getText()));
+                fornecedorService.atualizar(fornecedor);
+            }
             
             ativa(true);
             ligaDesliga(false);
@@ -97,7 +102,8 @@ public class ControllerCadFornecedor implements ActionListener {
             TelaBusFornecedor telaBusFornecedor = new TelaBusFornecedor(null, true);
             ControllerBusFornecedor controllerBusFornecedor = new ControllerBusFornecedor(telaBusFornecedor);
             telaBusFornecedor.setVisible(true);
-
+            System.out.println(codigo);
+            
             if (codigo != 0) {
                 Fornecedor fornecedor;
                 FornecedorService fornecedorService = new FornecedorService();

@@ -75,13 +75,18 @@ public class ControllerCadVendedor implements ActionListener {
             vendedor.setCpfVendedor(this.telaCadVendedor.getCpf().getText());
             vendedor.setEmail(this.telaCadVendedor.getEmail().getText());
             vendedor.setFoneVendedor(this.telaCadVendedor.getFone().getText());
-            vendedor.setPercentComissaoVenda(Float.parseFloat(this.telaCadVendedor.getPercComissaoVenda().toString()));
-            vendedor.setPercentComissaoVenda(Float.parseFloat(this.telaCadVendedor.getPercComissaoRecebto().toString()));
+            vendedor.setPercentComissaoVenda(Float.parseFloat(this.telaCadVendedor.getPercComissaoVenda().getText()));
+            vendedor.setPercentComissaoVenda(Float.parseFloat(this.telaCadVendedor.getPercComissaoRecebto().getText()));
             vendedor.setCompleEndereco(this.telaCadVendedor.getCompleEndereco().getText());
             vendedor.setEndereco_idcep(enderecoDAO.retrieve(this.telaCadVendedor.getjComboBoxCEP().getSelectedItem().toString()));
             
             VendedorService vendedorService = new VendedorService();
-            vendedorService.salvar(vendedor);
+            if (this.telaCadVendedor.getjTFIdVendedor().getText().trim().equalsIgnoreCase("")) {
+                vendedorService.salvar(vendedor);
+            } else {
+                vendedor.setIdvendedor(Integer.parseInt(this.telaCadVendedor.getjTFIdVendedor().getText()));
+                vendedorService.atualizar(vendedor);
+            }
             
             ativa(true);
             ligaDesliga(false);
@@ -91,6 +96,7 @@ public class ControllerCadVendedor implements ActionListener {
             TelaBusVendedor telaBusVendedor = new TelaBusVendedor(null, true);
             ControllerBusVendedor controllerBusVendedor = new ControllerBusVendedor(telaBusVendedor);
             telaBusVendedor.setVisible(true);
+            System.out.println(codigo);
 
             if (codigo != 0) {
                 Vendedor vendedor;
@@ -100,11 +106,15 @@ public class ControllerCadVendedor implements ActionListener {
                 ativa(false);
                 ligaDesliga(true);
 
-                //this.telaCadVendedor.getjTFIdVendedor().setText(vendedor.getIdvendedor()+ "");
+                this.telaCadVendedor.getjTFIdVendedor().setText(vendedor.getIdvendedor()+ "");
                 this.telaCadVendedor.getNome().setText(vendedor.getNome());
                 this.telaCadVendedor.getCpf().setText(vendedor.getCpfVendedor());
-
-                //this.telaCadVendedor.getjTFIdVendedor().setEnabled(false);
+                this.telaCadVendedor.getEmail().setText(vendedor.getEmail());
+                this.telaCadVendedor.getFone().setText(vendedor.getFoneVendedor());
+                this.telaCadVendedor.getCompleEndereco().setText(vendedor.getCompleEndereco());
+                this.telaCadVendedor.getjComboBoxCEP().setSelectedItem(vendedor.getEndereco_idcep());
+                
+                this.telaCadVendedor.getjTFIdVendedor().setEnabled(false);
             }
         } else if (acao.getSource() == telaCadVendedor.getjButtonSair()) {
 	    this.telaCadVendedor.dispose();

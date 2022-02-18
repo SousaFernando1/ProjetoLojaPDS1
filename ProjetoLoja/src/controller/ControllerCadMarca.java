@@ -49,7 +49,12 @@ public class ControllerCadMarca implements ActionListener {
             marca.setDescricaoMarca(this.telaCadMarca.getjTFNomeCidade().getText());
             
             MarcaService marcaService = new MarcaService();
-            marcaService.salvar(marca);
+            if (this.telaCadMarca.getjTFIdCidade().getText().trim().equalsIgnoreCase("")) {
+                marcaService.salvar(marca);
+            } else {
+                marca.setIdMarca(Integer.parseInt(this.telaCadMarca.getjTFIdCidade().getText()));
+                marcaService.atualizar(marca);
+            }
 
             ativa(true);
             ligaDesliga(false);

@@ -49,7 +49,13 @@ public class ControllerCadCor implements ActionListener {
 
 
             CorService corService = new CorService();
-            corService.salvar(cor);
+            
+            if (this.telaCadCor.getIdCor().getText().trim().equalsIgnoreCase("")) {
+                corService.salvar(cor);
+            } else {
+                cor.setIdCor(Integer.parseInt(this.telaCadCor.getIdCor().getText()));
+                corService.atualizar(cor);
+            }
 
             ativa(true);
             ligaDesliga(false);
