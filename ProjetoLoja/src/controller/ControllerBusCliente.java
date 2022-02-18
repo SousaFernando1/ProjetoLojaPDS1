@@ -20,9 +20,17 @@ public class ControllerBusCliente implements ActionListener{
         
         ClienteService clienteService = new ClienteService();        
         for (Cliente clienteAtualDaLista : clienteService.buscar()) {
+	    System.out.println("AQUI"+clienteAtualDaLista.getEndereco_idcep().getIdCep());
             tabela.addRow(new Object[]{ clienteAtualDaLista.getIdcliente(), 
                                         clienteAtualDaLista.getNome(),
-                                        clienteAtualDaLista.getCpfCliente()});
+                                        clienteAtualDaLista.getCpfCliente(),
+					clienteAtualDaLista.getRgCliente(),
+					clienteAtualDaLista.getDtNascCliente(),
+					clienteAtualDaLista.getEmail(),
+					clienteAtualDaLista.getEndereco_idcep().getIdCep(),
+					clienteAtualDaLista.getFoneCliente(),
+
+});
         }
     }
     @Override
