@@ -64,6 +64,7 @@ public class ControllerCadEndereco implements ActionListener {
         if (acao.getSource() == telaCadEndereco.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
+	    this.telaCadEndereco.getjTFIdCidade().setEnabled(false);
         } else if (acao.getSource() == telaCadEndereco.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);

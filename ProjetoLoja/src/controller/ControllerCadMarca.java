@@ -39,6 +39,8 @@ public class ControllerCadMarca implements ActionListener {
         if (acao.getSource() == telaCadMarca.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
+	    this.telaCadMarca.getjTFIdCidade().setEnabled(false);
+
         } else if (acao.getSource() == telaCadMarca.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);

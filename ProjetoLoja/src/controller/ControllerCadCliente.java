@@ -63,6 +63,7 @@ public class ControllerCadCliente implements ActionListener {
         if (acao.getSource() == telaCadCliente.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
+	    this.telaCadCliente.getjTFIdCliente().setEnabled(false);
         } else if (acao.getSource() == telaCadCliente.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);

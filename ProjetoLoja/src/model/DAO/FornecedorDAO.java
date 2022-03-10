@@ -254,7 +254,7 @@ public Fornecedor retrieveCNPJ(String CNPJ) {
             pstm.setString(4, objeto.getInscEstadualFornecedor());
             pstm.setString(5, objeto.getEmail());
             pstm.setString(6, objeto.getCompleEndereco());
-            pstm.setString(7, objeto.getEndereco_idcep().toString());
+            pstm.setInt(7, objeto.getEndereco_idcep().getIdCep());
             pstm.setInt(8, objeto.getIdfornecedor());
 	    pstm.executeUpdate();
         }catch(Exception ex){

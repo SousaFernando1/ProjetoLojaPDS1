@@ -41,6 +41,8 @@ public class ControllerCadTipoProduto implements ActionListener {
         if (acao.getSource() == telaCadTipoProduto.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
+	    this.telaCadTipoProduto.getjTFIdTipoProduto().setEnabled(false);
+
         } else if (acao.getSource() == telaCadTipoProduto.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);

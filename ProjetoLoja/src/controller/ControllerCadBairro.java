@@ -43,6 +43,7 @@ public class ControllerCadBairro implements ActionListener {
         if (acao.getSource() == telaCadBairro.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
+	    this.telaCadBairro.getjTFIdCidade().setEnabled(false);
         } else if (acao.getSource() == telaCadBairro.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);
@@ -66,7 +67,7 @@ public class ControllerCadBairro implements ActionListener {
                 bairroService.salvar(bairro);
             } else {
                 cidade.setIdCidade(Integer.parseInt(this.telaCadBairro.getjTFIdCidade().getText()));
-                System.out.println("teste");
+                System.out.println("Verificar a linha acima e ver se é cidade no início ou bairro");
                 bairroService.atualizar(bairro);
             }
 

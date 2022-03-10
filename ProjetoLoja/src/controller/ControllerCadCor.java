@@ -39,6 +39,7 @@ public class ControllerCadCor implements ActionListener {
         if (acao.getSource() == telaCadCor.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
+	    this.telaCadCor.getIdCor().setEnabled(false);
         } else if (acao.getSource() == telaCadCor.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);

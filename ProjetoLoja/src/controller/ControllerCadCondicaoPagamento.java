@@ -38,6 +38,7 @@ public class ControllerCadCondicaoPagamento implements ActionListener {
         if (acao.getSource() == telaCadCondicaoPagamento.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
+	    this.telaCadCondicaoPagamento.getjTFIdCondicaoPagamento().setEnabled(false);
         } else if (acao.getSource() == telaCadCondicaoPagamento.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);

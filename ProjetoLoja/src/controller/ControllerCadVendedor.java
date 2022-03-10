@@ -62,6 +62,8 @@ public class ControllerCadVendedor implements ActionListener {
         if (acao.getSource() == telaCadVendedor.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
+	    this.telaCadVendedor.getjTFIdVendedor().setEnabled(false);
+
         } else if (acao.getSource() == telaCadVendedor.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);

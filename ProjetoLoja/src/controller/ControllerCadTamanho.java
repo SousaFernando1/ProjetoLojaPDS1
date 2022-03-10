@@ -39,6 +39,8 @@ public class ControllerCadTamanho implements ActionListener {
         if (acao.getSource() == telaCadTamanho.getjButtonNovo()) {
             ativa(false);
             ligaDesliga(true);
+	    this.telaCadTamanho.getIdTamanho().setEnabled(false);
+
         } else if (acao.getSource() == telaCadTamanho.getjButtonCancelar()) {
             ativa(true);
             ligaDesliga(false);

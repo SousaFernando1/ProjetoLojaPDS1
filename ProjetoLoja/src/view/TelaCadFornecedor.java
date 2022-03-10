@@ -127,6 +127,11 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
         jLabel8.setText("CEP:");
 
         jComboBoxCEP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dsa" }));
+        jComboBoxCEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCEPActionPerformed(evt);
+            }
+        });
 
         jComboBoxCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,13 +190,13 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
                                 .addComponent(jLId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTFIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 27, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelDadosLayout.setVerticalGroup(
             jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDadosLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLId))
@@ -271,6 +276,10 @@ public class TelaCadFornecedor extends javax.swing.JFrame {
     private void jComboBoxCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxCidadeActionPerformed
+
+    private void jComboBoxCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCEPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCEPActionPerformed
 
     public JComboBox<String> getjComboBoxCEP() {
 	return jComboBoxCEP;
