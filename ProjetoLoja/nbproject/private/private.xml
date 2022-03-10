@@ -3,7 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sharkcode/Desenvolvimento/Faculdade/PDS1/NossoProjeto/ProjetoLojaPDS1/ProjetoLoja/src/view/TelaCadCondicaoPagamento.java</file>
+            <file>file:/home/sharkcode/Desenvolvimento/Faculdade/PDS1/NossoProjeto/ProjetoLojaPDS1/ProjetoLoja/src/controller/ControllerCadCaracteristicaProduto.java</file>
+            <file>file:/home/sharkcode/Desenvolvimento/Faculdade/PDS1/NossoProjeto/ProjetoLojaPDS1/ProjetoLoja/src/model/DAO/CaracteristicaProdutoDAO.java</file>
         </group>
     </open-files>
 </project-private>

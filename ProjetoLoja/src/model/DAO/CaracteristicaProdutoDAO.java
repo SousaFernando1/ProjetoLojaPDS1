@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class CaracteristicaProdutoDAO implements InterfaceDAO<CaracteristicaProduto>{
 
+    
+
     @Override
     public void create(CaracteristicaProduto objeto) {
         //Abrindo conexão

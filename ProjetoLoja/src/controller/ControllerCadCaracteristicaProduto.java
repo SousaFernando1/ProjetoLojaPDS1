@@ -75,7 +75,7 @@ public class ControllerCadCaracteristicaProduto implements ActionListener {
 	    cor = corDAO.retrieve(tempProduto);
 
 	    String tempTamanho;
-            tempTamanho = this.telaCadCaracteristicaProduto.getjComboBox2().getSelectedItem().toString();
+            tempTamanho = this.telaCadCaracteristicaProduto.getjComboBox3().getSelectedItem().toString();
 
 	    Tamanho tamanho = new Tamanho();
 	    TamanhoDAO tamanhoDAO = new TamanhoDAO();
