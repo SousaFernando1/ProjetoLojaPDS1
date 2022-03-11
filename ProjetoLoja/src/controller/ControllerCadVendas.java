@@ -71,6 +71,13 @@ public class ControllerCadVendas implements ActionListener {
 	telaVendas.getjButtonInsereDesconto().addActionListener(this);
 	telaVendas.getjTFDescontoTotal().setEnabled(false);
 
+
+	String date = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
+	telaVendas.getjTextFieldData().setText(date);
+
+	String hour = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+	telaVendas.getjTextFieldHora().setText(hour);
+
 //        ativa(true);
 //        ligaDesliga(false);
 
