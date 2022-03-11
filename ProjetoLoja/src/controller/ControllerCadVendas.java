@@ -29,6 +29,8 @@ public class ControllerCadVendas implements ActionListener {
     TelaVendas telaVendas;
     public static int codigo;
     public static int counter;
+    public static float total;
+
 
     public ControllerCadVendas(TelaVendas telaVendas) {
         this.telaVendas = telaVendas;
@@ -50,17 +52,30 @@ public class ControllerCadVendas implements ActionListener {
     this.telaVendas.getjTextFieldBarraProduto().addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-//		    System.out.println(telaVendas.getjTextFieldBarraProduto().getText());
-		    AddTable(telaVendas.getjTextFieldBarraProduto().getText());
+		AddTable(telaVendas.getjTextFieldBarraProduto().getText());
+		telaVendas.getjTextFieldBarraProduto().setText("");
+
                 } else if (evt.getKeyCode() == KeyEvent.VK_F1) {
                     abrePesquisaProduto(); 
                 } else if (evt.getKeyCode() == KeyEvent.VK_F2) {
+		    telaVendas.dispose();
+		    
+		    TelaVendas telaVenda = new TelaVendas(null, true);
+		    ControllerCadVendas controllerCadVendas = new ControllerCadVendas(telaVenda);
+		    telaVenda.setVisible(true);
                 } else if (evt.getKeyCode() == KeyEvent.VK_F3) {
+		    telaVendas.dispose();
 
                 } else if (evt.getKeyCode() == KeyEvent.VK_F4) {
 
                 } else if (evt.getKeyCode() == KeyEvent.VK_F5) {
-                    
+					    
+		    DefaultTableModel tabela = (DefaultTableModel) telaVendas.getjTable1().getModel();
+		    int lastRow = tabela.getRowCount();
+		    total -= (float)telaVendas.getjTable1().getValueAt(lastRow -1 ,4);
+		    telaVendas.getjLabelTotal().setText(total + "");
+
+		    tabela.removeRow(tabela.getRowCount() - 1);
                 }
             }
         });
@@ -86,8 +101,12 @@ public class ControllerCadVendas implements ActionListener {
 					caracteristicaProduto.getProduto_idproduto().getValProduto(),
 					caracteristicaProduto.getProduto_idproduto().getValProduto()});
         
+					total += caracteristicaProduto.getProduto_idproduto().getValProduto();
+					this.telaVendas.getjLabelTotal().setText(total + "");
+
 }
 
+    
     @Override
     public void actionPerformed(ActionEvent acao) {
         if (acao.getSource() == telaVendas.getjButtonBuscaProduto()) {
@@ -164,10 +183,13 @@ public class ControllerCadVendas implements ActionListener {
             
             CaracteristicaProduto caracteristicaProduto;
             CaracteristicaProdutoService caracteristicaProdutoService = new CaracteristicaProdutoService();
-caracteristicaProduto = caracteristicaProdutoService.buscar(codigo);
-
+	    System.out.println(codigo);
+	    if (codigo != 0){
+	    caracteristicaProduto = caracteristicaProdutoService.buscar(codigo);
 	    AddTable(caracteristicaProduto.getBarraProduto());
 	    
+}
+
             ativa(false);
 
             this.telaVendas.getjTextFieldBarraProduto().setText("");

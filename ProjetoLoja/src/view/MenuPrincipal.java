@@ -60,8 +60,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         FoneFornecedor = new javax.swing.JMenuItem();
         TipoProduto = new javax.swing.JMenuItem();
         CondicaoPagamento = new javax.swing.JMenuItem();
-        Vendas = new javax.swing.JMenuItem();
         CaracteristicaProduto = new javax.swing.JMenuItem();
+        Vendas = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -183,14 +183,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         Cadastros.add(CondicaoPagamento);
 
-        Vendas.setText("Vendas");
-        Vendas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VendasActionPerformed(evt);
-            }
-        });
-        Cadastros.add(Vendas);
-
         CaracteristicaProduto.setText("Característica Produto");
         CaracteristicaProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +190,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         Cadastros.add(CaracteristicaProduto);
+
+        Vendas.setText("Vendas");
+        Vendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VendasActionPerformed(evt);
+            }
+        });
+        Cadastros.add(Vendas);
 
         jMenuBar1.add(Cadastros);
 

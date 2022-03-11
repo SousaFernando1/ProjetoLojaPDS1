@@ -37,6 +37,7 @@ public class ControllerBusCaracteristicaProduto implements ActionListener{
 (int)this.telaBusCaracteristicaProduto.getjTable1().getValueAt(this.telaBusCaracteristicaProduto.getjTable1().getSelectedRow(), 0);
 this.telaBusCaracteristicaProduto.dispose();
         }else if(e.getSource() == this.telaBusCaracteristicaProduto.getjButtonSair()){
+	     ControllerCadVendas.codigo = 0;
             this.telaBusCaracteristicaProduto.dispose();
         }
     }
