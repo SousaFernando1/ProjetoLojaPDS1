@@ -1,5 +1,6 @@
 package controller;
 
+import static controller.ControllerCadCaracteristicaProduto.codigo;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +11,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.DAO.CidadeDAO;
 import model.bo.Bairro;
+import model.bo.CaracteristicaProduto;
 import model.bo.Cidade;
 import model.bo.Venda;
 import service.BairroService;
+import service.CaracteristicaProdutoService;
 import view.ModeloCadastros;
 import view.TelaBusBairro;
+import view.TelaBusCaracteristicaProduto;
 import view.TelaVendas;
 
 public class ControllerCadVendas implements ActionListener {
@@ -62,8 +66,18 @@ public class ControllerCadVendas implements ActionListener {
 //            ativa(false);
 //            ligaDesliga(true);
 	    this.telaVendas.getjTextFieldBarraProduto().setEnabled(true);
-	    
-	    
+            //chamada da tela da busca
+            TelaBusCaracteristicaProduto telaBusCaracteristicaProduto = new TelaBusCaracteristicaProduto(null, true);
+            ControllerBusCaracteristicaProduto controllerBusCaracteristicaProduto = new ControllerBusCaracteristicaProduto(telaBusCaracteristicaProduto);
+            telaBusCaracteristicaProduto.setVisible(true);
+            
+            CaracteristicaProduto caracteristicaProduto;
+            CaracteristicaProdutoService caracteristicaProdutoService = new CaracteristicaProdutoService();
+            caracteristicaProduto = caracteristicaProdutoService.buscar(codigo);
+
+            ativa(false);
+
+            this.telaVendas.getjTextFieldBarraProduto().setText(caracteristicaProduto.getBarraProduto());
         } 
 
 

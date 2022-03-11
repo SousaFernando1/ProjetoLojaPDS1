@@ -21,6 +21,7 @@ import service.BairroService;
 import service.CaracteristicaProdutoService;
 import view.ModeloCadastros;
 import view.TelaBusBairro;
+import view.TelaBusCaracteristicaProduto;
 import view.TelaCadCaracteristicaProduto;
 
 public class ControllerCadCaracteristicaProduto implements ActionListener {
@@ -107,27 +108,29 @@ public class ControllerCadCaracteristicaProduto implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCaracteristicaProduto.getjButtonBuscar()) {
-//	    codigo = 0;
-//            //chamada da tela da busca
-//            TelaBusBairro telaBusBairro = new TelaBusBairro(null, true);
-//            ControllerBusBairro controllerBusBairro = new ControllerBusBairro(telaBusBairro);
-//            telaBusBairro.setVisible(true);
-//
-//            if (codigo != 0) {
-//                Bairro bairro;
-//                BairroService bairroService = new BairroService();
-//                bairro = bairroService.buscar(codigo);
-//
-//                ativa(false);
-//                ligaDesliga(true);
-//
-//                this.telaCadCaracteristicaProduto.getjTFIdCidade().setText(bairro.getIdBairro()+ "");
-//                this.telaCadCaracteristicaProduto.getjTFNomeBairro().setText(bairro.getDescricaoBairro());
-////                this.telaCadCaracteristicaProduto.getjTFUF().setText(cidade.getUfCidade());
-//		this.telaCadCaracteristicaProduto.getjComboBox1().setSelectedItem(bairro.getCidadeMae());
-//
-//                this.telaCadCaracteristicaProduto.getjTFIdCidade().setEnabled(false);
-//            }
+	    codigo = 0;
+            //chamada da tela da busca
+            TelaBusCaracteristicaProduto telaBusCaracteristicaProduto = new TelaBusCaracteristicaProduto(null, true);
+            ControllerBusCaracteristicaProduto controllerBusCaracteristicaProduto = new ControllerBusCaracteristicaProduto(telaBusCaracteristicaProduto);
+            telaBusCaracteristicaProduto.setVisible(true);
+
+            if (codigo != 0) {
+                CaracteristicaProduto caracteristicaProduto;
+                CaracteristicaProdutoService caracteristicaProdutoService = new CaracteristicaProdutoService();
+                caracteristicaProduto = caracteristicaProdutoService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+                
+                this.telaCadCaracteristicaProduto.getjTFIdCidade().setText(caracteristicaProduto.getIdCaracteristicaProduto()+ "");
+                this.telaCadCaracteristicaProduto.getjComboBox1().setSelectedItem(caracteristicaProduto.getProduto_idproduto());
+                this.telaCadCaracteristicaProduto.getjComboBox2().setSelectedItem(caracteristicaProduto.getCor_idcor());
+                this.telaCadCaracteristicaProduto.getjComboBox3().setSelectedItem(caracteristicaProduto.getTamanhoProduto());
+                this.telaCadCaracteristicaProduto.getjTFCodBarras().setText(caracteristicaProduto.getBarraProduto());
+                this.telaCadCaracteristicaProduto.getjTFQtdEstoque().setText(caracteristicaProduto.getQtdEstoqueProduto() + "");
+
+                this.telaCadCaracteristicaProduto.getjTFIdCidade().setEnabled(false);
+            }
         } else if (acao.getSource() == telaCadCaracteristicaProduto.getjButtonSair()) {
 	    this.telaCadCaracteristicaProduto.dispose();
         }

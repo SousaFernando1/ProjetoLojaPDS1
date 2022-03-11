@@ -67,7 +67,7 @@
               <Color blue="99" green="0" red="33" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Bairro"/>
+            <Property name="text" type="java.lang.String" value="Caracteristica Produto"/>
           </Properties>
         </Component>
       </SubComponents>
