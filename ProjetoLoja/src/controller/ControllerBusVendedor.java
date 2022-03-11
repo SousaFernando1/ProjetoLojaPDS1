@@ -30,7 +30,11 @@ public class ControllerBusVendedor implements ActionListener{
         if(e.getSource() == this.telaBusVendedor.getjButtonCarregar()){
          ControllerCadVendedor.codigo = 
          (int)this.telaBusVendedor.getjTable1().getValueAt(this.telaBusVendedor.getjTable1().getSelectedRow(), 0);
-         this.telaBusVendedor.dispose();
+         ControllerCadVendas.codigoVendedor = 
+         (int)this.telaBusVendedor.getjTable1().getValueAt(this.telaBusVendedor.getjTable1().getSelectedRow(), 0);
+         
+
+this.telaBusVendedor.dispose();
         }else if(e.getSource() == this.telaBusVendedor.getjButtonSair()){
             this.telaBusVendedor.dispose();
         }

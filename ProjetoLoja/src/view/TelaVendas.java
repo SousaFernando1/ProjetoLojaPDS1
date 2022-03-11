@@ -275,6 +275,11 @@ public class TelaVendas extends javax.swing.JDialog {
 
         jButtonBuscaAluno.setText("...");
         jButtonBuscaAluno.setEnabled(false);
+        jButtonBuscaAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscaAlunoActionPerformed(evt);
+            }
+        });
 
         jFTFNomeAluno.setText("000");
         jFTFNomeAluno.setEnabled(false);
@@ -572,6 +577,10 @@ public class TelaVendas extends javax.swing.JDialog {
     private void jTextFieldBarraProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBarraProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldBarraProdutoActionPerformed
+
+    private void jButtonBuscaAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscaAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBuscaAlunoActionPerformed
 
     /**
      * @param args the command line arguments

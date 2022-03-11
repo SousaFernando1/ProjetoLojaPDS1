@@ -38,7 +38,11 @@ public class ControllerBusCliente implements ActionListener{
         if(e.getSource() == this.telaBusCliente.getjButtonCarregar()){
          ControllerCadCliente.codigo = 
          (int)this.telaBusCliente.getjTable1().getValueAt(this.telaBusCliente.getjTable1().getSelectedRow(), 0);
-         this.telaBusCliente.dispose();
+         
+     ControllerCadVendas.codigoCliente = 
+         (int)this.telaBusCliente.getjTable1().getValueAt(this.telaBusCliente.getjTable1().getSelectedRow(), 0);
+         
+this.telaBusCliente.dispose();
         }else if(e.getSource() == this.telaBusCliente.getjButtonSair()){
             this.telaBusCliente.dispose();
         }

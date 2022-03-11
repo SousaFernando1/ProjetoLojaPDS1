@@ -1,11 +1,15 @@
 package controller;
 
 import static controller.ControllerCadCaracteristicaProduto.codigo;
+import static controller.ControllerCadCliente.codigo;
 import static controller.ControllerCadCondicaoPagamento.codigo;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Random;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -17,9 +21,11 @@ import model.DAO.VendaDAO;
 import model.bo.Bairro;
 import model.bo.CaracteristicaProduto;
 import model.bo.Cidade;
+import model.bo.Cliente;
 import model.bo.CondicaoPagamento;
 import model.bo.Produto;
 import model.bo.Venda;
+import model.bo.Vendedor;
 import service.BairroService;
 import service.CaracteristicaProdutoService;
 import service.ClienteService;
@@ -29,19 +35,26 @@ import service.VendedorService;
 import view.ModeloCadastros;
 import view.TelaBusBairro;
 import view.TelaBusCaracteristicaProduto;
+import view.TelaBusCliente;
 import view.TelaBusCondicaoPagamento;
+import view.TelaBusVendedor;
 import view.TelaVendas;
 
 public class ControllerCadVendas implements ActionListener {
 
     TelaVendas telaVendas;
     public static int codigo;
+    public static int codigoCliente;
+    public static int codigoVendedor;
     public static int counter;
     public static float total;
+    Random random = new Random();
+
 
 
     public ControllerCadVendas(TelaVendas telaVendas) {
         this.telaVendas = telaVendas;
+
 
 	telaVendas.getjButtonBuscaProduto().setEnabled(true);
 //        telaVendas.getjButtonBuscar.addActionListener(this);
@@ -49,7 +62,9 @@ public class ControllerCadVendas implements ActionListener {
 //        telaVendas.getjButtonCancelar().addActionListener(this);
 //        telaVendas.getjButtonGravar().addActionListener(this);
         telaVendas.getjButtonBuscaProduto().addActionListener(this);
-	
+	telaVendas.getjButtonBuscaAluno().addActionListener(this);
+	telaVendas.getjButtonBuscaPersonal().addActionListener(this);
+
 
 //        ativa(true);
 //        ligaDesliga(false);
@@ -94,16 +109,20 @@ public class ControllerCadVendas implements ActionListener {
 
 
 //		System.out.println("ID CLIENTE: "+clienteService.buscar(1).getIdcliente());
-
-		int um = 1;
 		Venda venda = new Venda();
-		venda.setCliente_idcliente(clienteService.buscar(um));
-		venda.setVendedor_idvendedor(vendedorService.buscar(um));
+                float serieRandom = random.nextInt(10000) + 1;
+                venda.setSerieVenda(String.valueOf(serieRandom));
+
+		String dateStamp = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
+                venda.setDtVenda(dateStamp);
+
+		String timeStamp = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+		venda.setHrVenda(timeStamp);
+
+		venda.setCliente_idcliente(clienteService.buscar(codigoCliente));
+		venda.setVendedor_idvendedor(vendedorService.buscar(codigoVendedor));
 		venda.setCondicaoPagamento_idcondicaoPagamento(condicaoPagamento);
-		venda.setDtVenda("2022-03-12");
-		venda.setHrVenda("19");
 		venda.setValDescontoVenda(0);
-		venda.setSerieVenda("teste");
 		venda.setValTotalVenda(total);
 
 		VendaDAO vendaDAO = new VendaDAO();
@@ -158,7 +177,48 @@ public class ControllerCadVendas implements ActionListener {
         if (acao.getSource() == telaVendas.getjButtonBuscaProduto()) {
             abrePesquisaProduto(); 
 
+        } else if (acao.getSource() == telaVendas.getjButtonBuscaAluno()) {
+            codigoCliente = 0;
+            //chamada da tela da busca
+            TelaBusCliente telaBusCliente = new TelaBusCliente(null, true);
+            ControllerBusCliente controllerBusCliente = new ControllerBusCliente(telaBusCliente);
+            telaBusCliente.setVisible(true);
+
+
+            if (codigoCliente != 0) {
+                Cliente cliente;
+                ClienteService clienteService = new ClienteService();
+                cliente = clienteService.buscar(codigoCliente);
+		
+		this.telaVendas.getjFTFidAluno().setText(codigoCliente + "");
+		this.telaVendas.getjFTFNomeAluno().setText(cliente.getNome());
+
+                ativa(false);
+
+            }
+
+        } else if (acao.getSource() == telaVendas.getjButtonBuscaPersonal()) {
+            codigoVendedor = 0;
+            //chamada da tela da busca
+            TelaBusVendedor telaBusVendedor = new TelaBusVendedor(null, true);
+            ControllerBusVendedor controllerBusVendedor = new ControllerBusVendedor(telaBusVendedor);
+            telaBusVendedor.setVisible(true);
+
+
+            if (codigoVendedor != 0) {
+                Vendedor vendedor;
+                VendedorService vendedorService = new VendedorService();
+                vendedor = vendedorService.buscar(codigoVendedor);
+		
+		this.telaVendas.getjFTFidPersonal().setText(codigoVendedor + "");
+		this.telaVendas.getjFTFNomePersonal().setText(vendedor.getNome());
+
+                ativa(false);
+
+            }
+
         } 
+
 
    
 
@@ -247,7 +307,8 @@ public class ControllerCadVendas implements ActionListener {
 
     //Método para habilitar/desabilitar botões(controle de estados)
     public void ativa(boolean estado) {
-        telaVendas.getjButtonBuscaAluno().setEnabled(estado);
+        telaVendas.getjButtonBuscaAluno().setEnabled(!estado);
+        telaVendas.getjButtonBuscaPersonal().setEnabled(!estado);
 //        telaVendas.getjButtonCancelar().setEnabled(!estado);
 //        telaVendas.getjButtonGravar().setEnabled(!estado);
 //        telaVendas.getjButtonBuscar().setEnabled(estado);
