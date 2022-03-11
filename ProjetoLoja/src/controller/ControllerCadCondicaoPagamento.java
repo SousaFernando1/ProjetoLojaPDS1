@@ -10,12 +10,14 @@ import javax.swing.JTextField;
 import model.bo.CondicaoPagamento;
 import service.CondicaoPagamentoService;
 import view.ModeloCadastros;
+import view.TelaBusCondicaoPagamento;
 import view.TelaCadCondicaoPagamento;
 import view.TelaCadFornecedor;
 
 public class ControllerCadCondicaoPagamento implements ActionListener {
 
     TelaCadCondicaoPagamento telaCadCondicaoPagamento;
+    public static int codigo;
 
     public ControllerCadCondicaoPagamento(TelaCadCondicaoPagamento telaCadCondicaoPagamento) {
         this.telaCadCondicaoPagamento = telaCadCondicaoPagamento;
@@ -63,6 +65,27 @@ public class ControllerCadCondicaoPagamento implements ActionListener {
             ativa(true);
             ligaDesliga(false);
         } else if (acao.getSource() == telaCadCondicaoPagamento.getjButtonBuscar()) {
+	    codigo = 0;
+            //chamada da tela da busca
+            TelaBusCondicaoPagamento telaBusCondicaoPagamento = new TelaBusCondicaoPagamento(null, true);
+            ControllerBusCondicaoPagamento controllerBusCondicaoPagamento = new ControllerBusCondicaoPagamento(telaBusCondicaoPagamento);
+            telaBusCondicaoPagamento.setVisible(true);
+
+            if (codigo != 0) {
+                CondicaoPagamento condicaoPagamento;
+                CondicaoPagamentoService condicaoPagamentoService = new CondicaoPagamentoService();
+                condicaoPagamento = condicaoPagamentoService.buscar(codigo);
+
+                ativa(false);
+                ligaDesliga(true);
+
+                this.telaCadCondicaoPagamento.getjTFIdCondicaoPagamento().setText(condicaoPagamento.getIdcondicaoPagamento()+ "");
+                this.telaCadCondicaoPagamento.getjTFDescricaoCondicaoPagamento().setText(condicaoPagamento.getDescricaoCondicaoPagamento());
+                this.telaCadCondicaoPagamento.getjTFDiasPrimeiraParcelaCondicaoPagamento().setText(condicaoPagamento.getNumDiasAtePrimeiraParcela() + "");
+                this.telaCadCondicaoPagamento.getjTFDiasEntreParcelasCondicaoPagamento().setText(condicaoPagamento.getNumDiasEntreParcelas() + "");
+
+                this.telaCadCondicaoPagamento.getjTFIdCondicaoPagamento().setEnabled(false);	
+}    	    
         } else if (acao.getSource() == telaCadCondicaoPagamento.getjButtonSair()) {
 	    this.telaCadCondicaoPagamento.dispose();
         }

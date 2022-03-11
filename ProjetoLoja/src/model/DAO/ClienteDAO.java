@@ -99,8 +99,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente>{
 				   + "emailCliente, "
 				   + "compleEnderecoCliente, "
 				   + "endereco_idcep "
-				   + " FROM cliente"
-				   + "WHERE cliente.idcliente = ?";
+				   + " FROM cliente WHERE cliente.idcliente = ?";
         
         Connection conexao     = ConnectionFactory.getConnection();
         PreparedStatement pstm = null;

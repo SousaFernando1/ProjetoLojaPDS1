@@ -1,6 +1,7 @@
 package controller;
 
 import static controller.ControllerCadCaracteristicaProduto.codigo;
+import static controller.ControllerCadCondicaoPagamento.codigo;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,17 +12,24 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.DAO.CidadeDAO;
+import model.DAO.ClienteDAO;
+import model.DAO.VendaDAO;
 import model.bo.Bairro;
 import model.bo.CaracteristicaProduto;
 import model.bo.Cidade;
+import model.bo.CondicaoPagamento;
 import model.bo.Produto;
 import model.bo.Venda;
 import service.BairroService;
 import service.CaracteristicaProdutoService;
+import service.ClienteService;
+import service.CondicaoPagamentoService;
 import service.ProdutoService;
+import service.VendedorService;
 import view.ModeloCadastros;
 import view.TelaBusBairro;
 import view.TelaBusCaracteristicaProduto;
+import view.TelaBusCondicaoPagamento;
 import view.TelaVendas;
 
 public class ControllerCadVendas implements ActionListener {
@@ -67,6 +75,44 @@ public class ControllerCadVendas implements ActionListener {
 		    telaVendas.dispose();
 
                 } else if (evt.getKeyCode() == KeyEvent.VK_F4) {
+
+		 codigo = 0;
+            //chamada da tela da busca
+            TelaBusCondicaoPagamento telaBusCondicaoPagamento = new TelaBusCondicaoPagamento(null, true);
+            ControllerBusCondicaoPagamento controllerBusCondicaoPagamento = new ControllerBusCondicaoPagamento(telaBusCondicaoPagamento);
+            telaBusCondicaoPagamento.setVisible(true);
+
+            if (codigo != 0) {
+                CondicaoPagamento condicaoPagamento = new CondicaoPagamento();
+                CondicaoPagamentoService condicaoPagamentoService = new CondicaoPagamentoService();
+                condicaoPagamento = condicaoPagamentoService.buscar(codigo);
+		
+		ClienteService clienteService = new ClienteService();
+		VendedorService vendedorService = new VendedorService();
+
+//                ativa(false);	
+
+
+//		System.out.println("ID CLIENTE: "+clienteService.buscar(1).getIdcliente());
+
+		int um = 1;
+		Venda venda = new Venda();
+		venda.setCliente_idcliente(clienteService.buscar(um));
+		venda.setVendedor_idvendedor(vendedorService.buscar(um));
+		venda.setCondicaoPagamento_idcondicaoPagamento(condicaoPagamento);
+		venda.setDtVenda("2022-03-12");
+		venda.setHrVenda("19");
+		venda.setValDescontoVenda(0);
+		venda.setSerieVenda("teste");
+		venda.setValTotalVenda(total);
+
+		VendaDAO vendaDAO = new VendaDAO();
+
+		vendaDAO.create(venda);
+		telaVendas.dispose();
+}    	    
+
+
 
                 } else if (evt.getKeyCode() == KeyEvent.VK_F5) {
 					    

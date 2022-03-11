@@ -7,6 +7,7 @@ public class Venda {
     private float valDescontoVenda;
     private float valTotalVenda;
     private Cliente cliente_idcliente;
+    private Vendedor vendedor_idvendedor;
     private CondicaoPagamento condicaoPagamento_idcondicaoPagamento;
     private int diaVencimentoParcela;
 
@@ -95,6 +96,14 @@ public class Venda {
 
     public void setDiaVencimentoParcela(int diaVencimentoParcela) {
         this.diaVencimentoParcela = diaVencimentoParcela;
+    }
+
+    public Vendedor getVendedor_idvendedor() {
+	return vendedor_idvendedor;
+    }
+
+    public void setVendedor_idvendedor(Vendedor vendedor_idvendedor) {
+	this.vendedor_idvendedor = vendedor_idvendedor;
     }
 
     @Override
