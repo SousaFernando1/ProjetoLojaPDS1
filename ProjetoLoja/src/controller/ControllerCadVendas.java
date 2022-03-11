@@ -44,7 +44,7 @@ public class ControllerCadVendas implements ActionListener {
                 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     System.out.println("FUNCIONANDO");
                 } else if (evt.getKeyCode() == KeyEvent.VK_F1) {
-                    //Rotina para carga da busca por prdutos
+                    abrePesquisaProduto(); 
                 } else if (evt.getKeyCode() == KeyEvent.VK_F2) {
                 } else if (evt.getKeyCode() == KeyEvent.VK_F3) {
 
@@ -63,26 +63,12 @@ public class ControllerCadVendas implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent acao) {
         if (acao.getSource() == telaVendas.getjButtonBuscaProduto()) {
-//            ativa(false);
-//            ligaDesliga(true);
-	    this.telaVendas.getjTextFieldBarraProduto().setEnabled(true);
-            //chamada da tela da busca
-            TelaBusCaracteristicaProduto telaBusCaracteristicaProduto = new TelaBusCaracteristicaProduto(null, true);
-            ControllerBusCaracteristicaProduto controllerBusCaracteristicaProduto = new ControllerBusCaracteristicaProduto(telaBusCaracteristicaProduto);
-            telaBusCaracteristicaProduto.setVisible(true);
-            
-            CaracteristicaProduto caracteristicaProduto;
-            CaracteristicaProdutoService caracteristicaProdutoService = new CaracteristicaProdutoService();
-            caracteristicaProduto = caracteristicaProdutoService.buscar(codigo);
-
-            ativa(false);
-
-            this.telaVendas.getjTextFieldBarraProduto().setText(caracteristicaProduto.getBarraProduto());
+            abrePesquisaProduto(); 
         } 
 
+   
 
-
-
+        
 
 
 
@@ -138,6 +124,26 @@ public class ControllerCadVendas implements ActionListener {
 //        } else if (acao.getSource() == telaVendas.getjButtonSair()) {
 //	    this.telaVendas.dispose();
 //        }
+    }
+    
+     public void abrePesquisaProduto() {
+         this.telaVendas.getjTextFieldBarraProduto().setEnabled(true);
+            //chamada da tela da busca
+            TelaBusCaracteristicaProduto telaBusCaracteristicaProduto = new TelaBusCaracteristicaProduto(null, true);
+            ControllerBusCaracteristicaProduto controllerBusCaracteristicaProduto = new ControllerBusCaracteristicaProduto(telaBusCaracteristicaProduto);
+            telaBusCaracteristicaProduto.setVisible(true);
+            
+            CaracteristicaProduto caracteristicaProduto;
+            CaracteristicaProdutoService caracteristicaProdutoService = new CaracteristicaProdutoService();
+            caracteristicaProduto = caracteristicaProdutoService.buscar(codigo);
+
+            ativa(false);
+
+            this.telaVendas.getjTextFieldBarraProduto().setText(caracteristicaProduto.getBarraProduto());
+    }
+     
+    public void insereProduto() {
+        
     }
 
     //Método para habilitar/desabilitar botões(controle de estados)
