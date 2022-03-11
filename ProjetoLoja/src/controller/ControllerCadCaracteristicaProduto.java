@@ -42,6 +42,9 @@ public class ControllerCadCaracteristicaProduto implements ActionListener {
         ativa(true);
         ligaDesliga(false);
 
+
+
+
     
     }        
 

@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import model.DAO.CidadeDAO;
 import model.bo.Cidade;
 import java.util.List;
+import javax.swing.JFormattedTextField;
 import model.DAO.CorDAO;
 import model.DAO.ProdutoDAO;
 import model.DAO.TamanhoDAO;
@@ -135,13 +136,15 @@ public class TelaCadCaracteristicaProduto extends javax.swing.JFrame {
 	this.jComboBox3 = jComboBox3;
     }
 
-    public JTextField getjTFCodBarras() {
+    public JFormattedTextField getjTFCodBarras() {
 	return jTFCodBarras;
     }
 
-    public void setjTFCodBarras(JTextField jTFCodBarras) {
+    public void setjTFCodBarras(JFormattedTextField jTFCodBarras) {
 	this.jTFCodBarras = jTFCodBarras;
     }
+
+
 
     public JTextField getjTFQtdEstoque() {
 	return jTFQtdEstoque;
@@ -190,7 +193,7 @@ public class TelaCadCaracteristicaProduto extends javax.swing.JFrame {
         jLId4 = new javax.swing.JLabel();
         jTFQtdEstoque = new javax.swing.JTextField();
         jLId5 = new javax.swing.JLabel();
-        jTFCodBarras = new javax.swing.JTextField();
+        jTFCodBarras = new javax.swing.JFormattedTextField();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -269,7 +272,16 @@ public class TelaCadCaracteristicaProduto extends javax.swing.JFrame {
         jLId5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLId5.setText("Quantidade do estoque: ");
 
-        jTFCodBarras.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        try {
+            jTFCodBarras.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("# ###### ######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jTFCodBarras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFCodBarrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
         jPanelDados.setLayout(jPanelDadosLayout);
@@ -305,8 +317,8 @@ public class TelaCadCaracteristicaProduto extends javax.swing.JFrame {
                         .addGap(65, 65, 65))
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addComponent(jLId4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTFCodBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTFCodBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanelDadosLayout.setVerticalGroup(
@@ -397,6 +409,10 @@ public class TelaCadCaracteristicaProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
+    private void jTFCodBarrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCodBarrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCodBarrasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -454,7 +470,7 @@ public class TelaCadCaracteristicaProduto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelDados;
     private javax.swing.JPanel jPanelTitulo;
-    private javax.swing.JTextField jTFCodBarras;
+    private javax.swing.JFormattedTextField jTFCodBarras;
     private javax.swing.JTextField jTFIdCidade;
     private javax.swing.JTextField jTFQtdEstoque;
     // End of variables declaration//GEN-END:variables

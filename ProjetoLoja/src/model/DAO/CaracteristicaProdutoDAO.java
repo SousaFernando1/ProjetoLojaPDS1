@@ -162,7 +162,7 @@ public class CaracteristicaProdutoDAO implements InterfaceDAO<CaracteristicaProd
                 caracteristicaProduto.setIdCaracteristicaProduto(rst.getInt("idCaracterisitcaProduto"));
                 caracteristicaProduto.setBarraProduto(rst.getString("barraProduto"));                                 
                 caracteristicaProduto.setTamanhoProduto(rst.getString("tamanhoProduto"));
-		caracteristicaProduto.setProduto_idproduto(produtoDAO.retrieve(rst.getInt("produto_idproduto")));   
+		caracteristicaProduto.setProduto_idproduto(produtoDAO.retrieve(rst.getInt("produto_idproduto"))); 
 		caracteristicaProduto.setCor_idcor(corDAO.retrieve(rst.getInt("cor_idcor")));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);

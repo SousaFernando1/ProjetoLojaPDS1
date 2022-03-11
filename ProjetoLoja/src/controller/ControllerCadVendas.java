@@ -9,13 +9,16 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import model.DAO.CidadeDAO;
 import model.bo.Bairro;
 import model.bo.CaracteristicaProduto;
 import model.bo.Cidade;
+import model.bo.Produto;
 import model.bo.Venda;
 import service.BairroService;
 import service.CaracteristicaProdutoService;
+import service.ProdutoService;
 import view.ModeloCadastros;
 import view.TelaBusBairro;
 import view.TelaBusCaracteristicaProduto;
@@ -25,6 +28,7 @@ public class ControllerCadVendas implements ActionListener {
 
     TelaVendas telaVendas;
     public static int codigo;
+    public static int counter;
 
     public ControllerCadVendas(TelaVendas telaVendas) {
         this.telaVendas = telaVendas;
@@ -35,14 +39,19 @@ public class ControllerCadVendas implements ActionListener {
 //        telaVendas.getjButtonCancelar().addActionListener(this);
 //        telaVendas.getjButtonGravar().addActionListener(this);
         telaVendas.getjButtonBuscaProduto().addActionListener(this);
+	
 
 //        ativa(true);
 //        ligaDesliga(false);
 
+	 
+	 
+
     this.telaVendas.getjTextFieldBarraProduto().addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                    System.out.println("FUNCIONANDO");
+//		    System.out.println(telaVendas.getjTextFieldBarraProduto().getText());
+		    AddTable(telaVendas.getjTextFieldBarraProduto().getText());
                 } else if (evt.getKeyCode() == KeyEvent.VK_F1) {
                     abrePesquisaProduto(); 
                 } else if (evt.getKeyCode() == KeyEvent.VK_F2) {
@@ -60,10 +69,30 @@ public class ControllerCadVendas implements ActionListener {
 
     //Nesse método controlamos o que fazer quando uma ação acontece
     //Não foram desenvolvidas ainda as funcionalidades de persistência
+
+    public void AddTable(String codBarra) {
+	 counter = 0;
+	 CaracteristicaProdutoService caracteristicaProdutoService = new CaracteristicaProdutoService();
+	 CaracteristicaProduto caracteristicaProduto = new CaracteristicaProduto();
+	 
+	 caracteristicaProduto = caracteristicaProdutoService.buscar(codBarra);
+	 
+	    counter++;
+            DefaultTableModel tabela = (DefaultTableModel) this.telaVendas.getjTable1().getModel();
+            tabela.addRow(new Object[]{ counter,
+					caracteristicaProduto.getProduto_idproduto().getIdproduto(),
+                                        caracteristicaProduto.getProduto_idproduto().getDescricaoProduto(),
+                                        1,
+					caracteristicaProduto.getProduto_idproduto().getValProduto(),
+					caracteristicaProduto.getProduto_idproduto().getValProduto()});
+        
+}
+
     @Override
     public void actionPerformed(ActionEvent acao) {
         if (acao.getSource() == telaVendas.getjButtonBuscaProduto()) {
             abrePesquisaProduto(); 
+
         } 
 
    
@@ -135,11 +164,13 @@ public class ControllerCadVendas implements ActionListener {
             
             CaracteristicaProduto caracteristicaProduto;
             CaracteristicaProdutoService caracteristicaProdutoService = new CaracteristicaProdutoService();
-            caracteristicaProduto = caracteristicaProdutoService.buscar(codigo);
+caracteristicaProduto = caracteristicaProdutoService.buscar(codigo);
 
+	    AddTable(caracteristicaProduto.getBarraProduto());
+	    
             ativa(false);
 
-            this.telaVendas.getjTextFieldBarraProduto().setText(caracteristicaProduto.getBarraProduto());
+            this.telaVendas.getjTextFieldBarraProduto().setText("");
     }
      
     public void insereProduto() {

@@ -26,9 +26,9 @@ public class CaracteristicaProdutoService implements InterfaceService<Caracteris
     }
 
     @Override
-    public CaracteristicaProduto buscar(String descricao) {
+    public CaracteristicaProduto buscar(String codBarra) {
         CaracteristicaProdutoDAO caracteristicaProdutoDAO = new CaracteristicaProdutoDAO();
-        return caracteristicaProdutoDAO.retrieve(descricao);
+        return caracteristicaProdutoDAO.retrieve(codBarra);
     }
 
     @Override
