@@ -48,6 +48,10 @@ public class ControllerCadVendas implements ActionListener {
     public static int codigoVendedor;
     public static int counter;
     public static float total;
+    public static float totalSemDesconto;
+    public static float descontoTotal;
+    public static float desconto;
+
     Random random = new Random();
 
 
@@ -64,7 +68,8 @@ public class ControllerCadVendas implements ActionListener {
         telaVendas.getjButtonBuscaProduto().addActionListener(this);
 	telaVendas.getjButtonBuscaAluno().addActionListener(this);
 	telaVendas.getjButtonBuscaPersonal().addActionListener(this);
-
+	telaVendas.getjButtonInsereDesconto().addActionListener(this);
+	telaVendas.getjTFDescontoTotal().setEnabled(false);
 
 //        ativa(true);
 //        ligaDesliga(false);
@@ -122,8 +127,8 @@ public class ControllerCadVendas implements ActionListener {
 		venda.setCliente_idcliente(clienteService.buscar(codigoCliente));
 		venda.setVendedor_idvendedor(vendedorService.buscar(codigoVendedor));
 		venda.setCondicaoPagamento_idcondicaoPagamento(condicaoPagamento);
-		venda.setValDescontoVenda(0);
-		venda.setValTotalVenda(total);
+		venda.setValDescontoVenda(descontoTotal);
+		venda.setValTotalVenda(totalSemDesconto);
 
 		VendaDAO vendaDAO = new VendaDAO();
 
@@ -166,8 +171,11 @@ public class ControllerCadVendas implements ActionListener {
 					caracteristicaProduto.getProduto_idproduto().getValProduto(),
 					caracteristicaProduto.getProduto_idproduto().getValProduto()});
         
+					totalSemDesconto += caracteristicaProduto.getProduto_idproduto().getValProduto();
+					System.out.println(totalSemDesconto);
 					total += caracteristicaProduto.getProduto_idproduto().getValProduto();
 					this.telaVendas.getjLabelTotal().setText(total + "");
+					insereDesconto();
 
 }
 
@@ -176,6 +184,7 @@ public class ControllerCadVendas implements ActionListener {
     public void actionPerformed(ActionEvent acao) {
         if (acao.getSource() == telaVendas.getjButtonBuscaProduto()) {
             abrePesquisaProduto(); 
+
 
         } else if (acao.getSource() == telaVendas.getjButtonBuscaAluno()) {
             codigoCliente = 0;
@@ -217,67 +226,11 @@ public class ControllerCadVendas implements ActionListener {
 
             }
 
-        } 
+        } else if (acao.getSource() == telaVendas.getjButtonInsereDesconto()) {
 
+	insereDesconto();
+}
 
-   
-
-        
-
-
-
-
-
-
-//else if (acao.getSource() == telaVendas.getjButtonCancelar()) {
-//            ativa(true);
-//            ligaDesliga(false);
-//        } else if (acao.getSource() == telaVendas.getjButtonGravar()) {
-////            Bairro bairro = new Bairro();
-//	    Venda venda = new Venda();
-//
-//	    String tempString;
-//            tempString = this.telaVendas.getjComboBox1().getSelectedItem().toString();
-//
-//	    
-//            venda.setIdvenda(this.telaVendas.);
-//  
-//            BairroService bairroService = new BairroService();
-//            if (this.telaVendas.getjTFIdCidade().getText().trim().equalsIgnoreCase("")) {
-//                bairroService.salvar(bairro);
-//            } else {
-//                cidade.setIdCidade(Integer.parseInt(this.telaVendas.getjTFIdCidade().getText()));
-//                System.out.println("teste");
-//                bairroService.atualizar(bairro);
-//            }
-//
-//            ativa(true);
-//            ligaDesliga(false);
-//        } else if (acao.getSource() == telaVendas.getjButtonBuscar()) {
-//	    codigo = 0;
-//            //chamada da tela da busca
-//            TelaBusBairro telaBusBairro = new TelaBusBairro(null, true);
-//            ControllerBusBairro controllerBusBairro = new ControllerBusBairro(telaBusBairro);
-//            telaBusBairro.setVisible(true);
-//
-//            if (codigo != 0) {
-//                Bairro bairro;
-//                BairroService bairroService = new BairroService();
-//                bairro = bairroService.buscar(codigo);
-//
-//                ativa(false);
-//                ligaDesliga(true);
-//
-//                this.telaVendas.getjTFIdCidade().setText(bairro.getIdBairro()+ "");
-//                this.telaVendas.getjTFNomeBairro().setText(bairro.getDescricaoBairro());
-////                this.telaVendas.getjTFUF().setText(cidade.getUfCidade());
-//		this.telaVendas.getjComboBox1().setSelectedItem(bairro.getCidadeMae());
-//
-//                this.telaVendas.getjTFIdCidade().setEnabled(false);
-//            }
-//        } else if (acao.getSource() == telaVendas.getjButtonSair()) {
-//	    this.telaVendas.dispose();
-//        }
     }
     
      public void abrePesquisaProduto() {
@@ -301,8 +254,29 @@ public class ControllerCadVendas implements ActionListener {
             this.telaVendas.getjTextFieldBarraProduto().setText("");
     }
      
-    public void insereProduto() {
-        
+    public void insereDesconto() {
+	if(this.telaVendas.getjTFDesconto().getText().equalsIgnoreCase("")){
+	return;
+} else {
+desconto = Float.parseFloat(this.telaVendas.getjTFDesconto().getText());
+	System.out.println("DESCONTO NA FUNCAO: " + desconto);
+
+	    if(desconto > 0) {
+	    float temp;
+	    temp = totalSemDesconto;
+	    descontoTotal = desconto/100 * temp ;
+		System.out.println("Temp:" + temp);
+		System.out.println("DescontoTotal:" + descontoTotal);
+		System.out.println("Desconto:" + desconto);
+
+
+	    total = temp - descontoTotal;
+	    this.telaVendas.getjLabelTotal().setText(total + "");
+	    this.telaVendas.getjTFDescontoTotal().setText(descontoTotal + "");
+
+    }
+}
+
     }
 
     //Método para habilitar/desabilitar botões(controle de estados)
