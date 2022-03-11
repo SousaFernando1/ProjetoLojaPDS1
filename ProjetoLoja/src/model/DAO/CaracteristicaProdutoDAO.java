@@ -180,9 +180,9 @@ public class CaracteristicaProdutoDAO implements InterfaceDAO<CaracteristicaProd
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = " UPDATE caracteristicaProduto "
                            + " SET produto_idProduto = ? ,"
-			   + " cor_idcor = ?"
-			   + " tamanhoProduto = ?"
-			   + " BarraProduto = ?"
+			   + " cor_idcor = ?,"
+			   + " tamanhoProduto = ?,"
+			   + " BarraProduto = ?,"
 			   + " qtdEstoqueProduto = ?"
                            + " WHERE caracteristicaProduto.idCaracterisitcaProduto = ?";
 
@@ -194,6 +194,7 @@ public class CaracteristicaProdutoDAO implements InterfaceDAO<CaracteristicaProd
             pstm.setString(3, objeto.getTamanhoProduto());
             pstm.setString(4, objeto.getBarraProduto());
 	    pstm.setFloat(5, objeto.getQtdEstoqueProduto());
+	    pstm.setInt(6, objeto.getIdCaracteristicaProduto());
 
             pstm.executeUpdate();
         }catch(Exception ex){
