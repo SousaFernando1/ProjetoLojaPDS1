@@ -130,6 +130,7 @@ public class CaracteristicaProdutoDAO implements InterfaceDAO<CaracteristicaProd
                 caracteristicaProduto.setTamanhoProduto(rst.getString("tamanhoProduto"));
 		caracteristicaProduto.setProduto_idproduto(produtoDAO.retrieve(rst.getInt("produto_idproduto")));   
 		caracteristicaProduto.setCor_idcor(corDAO.retrieve(rst.getInt("cor_idcor")));
+		caracteristicaProduto.setQtdEstoqueProduto(rst.getInt("qtdEstoqueProduto"));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
             return caracteristicaProduto; 

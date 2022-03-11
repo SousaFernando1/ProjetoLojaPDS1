@@ -234,7 +234,6 @@ public class TelaCadCaracteristicaProduto extends javax.swing.JFrame {
 
         jTFIdCidade.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teste" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -247,7 +246,6 @@ public class TelaCadCaracteristicaProduto extends javax.swing.JFrame {
         jLId2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLId2.setText("Cor:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teste" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -257,7 +255,6 @@ public class TelaCadCaracteristicaProduto extends javax.swing.JFrame {
         jLId3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLId3.setText("Tamanho:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teste" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
